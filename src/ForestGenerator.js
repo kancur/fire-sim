@@ -4,29 +4,30 @@ import FlammableObj from "./FlamableObj";
 export default class ForestGenerator {
   constructor(dimensions = {height: 80, width: 80}) {
     this.spacePerTree = 40; // square with 40 pixels long edge
-    this.rows = Math.round(dimensions.height / this.spacePerTree);
-    this.cols = Math.round(dimensions.width / this.spacePerTree);
+    this.randomness = 100; // pixels
+    this.rows = Math.round((dimensions.height - this.randomness) / this.spacePerTree);
+    this.cols = Math.round((dimensions.width - this.randomness) / this.spacePerTree);
     console.log(this.rows)
-    this.SIZE_MULTIPLIER = 1;
-    this.DENSITY = 1;
-    this.randomness = 70; // pixels
+    this.size_multiplier = 1;
+    this.density = 0.8;
     this.trees = [];
     this.generateTrees();
   }
 
   generateTrees = () => {
+    this.trees = [];
     for (let row = 1; row <= this.cols; row++) {
       for (let col = 1; col <= this.rows; col++) {
         const position = {
           x:
-            row * this.spacePerTree * this.SIZE_MULTIPLIER +
-            Math.floor(Math.random() * this.randomness * this.SIZE_MULTIPLIER),
+            row * this.spacePerTree * this.size_multiplier +
+            Math.floor(Math.random() * this.randomness * this.size_multiplier),
           y:
-            col * this.spacePerTree * this.SIZE_MULTIPLIER +
-            Math.floor(Math.random() * this.randomness * this.SIZE_MULTIPLIER),
+            col * this.spacePerTree * this.size_multiplier +
+            Math.floor(Math.random() * this.randomness * this.size_multiplier),
         };
-        if (Math.random() < this.DENSITY) {
-          const tree = new FlammableObj(Tree, position, this.SIZE_MULTIPLIER);
+        if (Math.random() < this.density) {
+          const tree = new FlammableObj(Tree, position, this.size_multiplier);
           this.trees.push(tree);
         }
       }

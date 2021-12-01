@@ -4,3 +4,24 @@ html {
 canvas {
   display: block;
 }
+
+.settings {
+  position: fixed;
+  background-color: white;
+  padding: 6px 12px;
+  right: 0;
+  box-shadow: 0 0 10px #00000047;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+label {
+  display: flex;
+  gap: 5px;
+  vertical-align: middle;
+}
+
+#density-display {
+  width: 26px;
+}

@@ -7,7 +7,8 @@ import Fire from "./assets/fire.png";
 import FireEmitter from "./FireEmitter";
 import { particleContainer } from "./particleContainer";
 import ForestGenerator from "./ForestGenerator";
-import './style.css';
+import "./style.css";
+import SettingsHandlers from "./SettingsHandlers";
 
 const container = new PIXI.Container();
 
@@ -20,27 +21,39 @@ document.body.appendChild(app.view);
 app.stage.addChild(container);
 app.stage.addChild(particleContainer);
 
-
 let debugMode = true;
-const debugInput = document.body.querySelector('#debug')
-debugInput.checked = debugMode
+const debugInput = document.body.querySelector("#debug");
+debugInput.checked = debugMode;
 debugInput.onchange = () => {
-    debugMode = debugInput.checked
-    flamableArea.setDebug(debugMode)
-}
-const forestGen = new ForestGenerator({width: window.innerWidth, height: window.innerHeight})
+  debugMode = debugInput.checked;
+  flamableArea.setDebug(debugMode);
+};
+
+const settings = new SettingsHandlers();
+
+
+const forestGen = new ForestGenerator({
+  width: window.innerWidth,
+  height: window.innerHeight,
+});
 export const flamableArea = new FlammableArea(forestGen.trees);
+
+const generateForestButton = document.body.querySelector("#generate");
+
+generateForestButton.addEventListener("click", () => {
+  forestGen.density = settings.forestDensity
+  forestGen.generateTrees();
+  flamableArea.cleanFlamables();
+  flamableArea.setFlamables(forestGen.trees);
+  container.removeChildren();
+  particleContainer.removeChildren();
+  container.addChild(...flamableArea.flamables);
+});
 
 container.addChild(...flamableArea.flamables);
 
-/* 
-container.x = app.screen.width / 2;
-container.y = app.screen.height / 2; */
-/* 
-container.pivot.x = container.width / 2;
-container.pivot.y = container.height / 2; */
+
 
 app.ticker.add((delta) => {
   gameLoop();
-  //emitter.update(0.016);
 });

@@ -1,7 +1,7 @@
 import { SIZE_MULTIPLIER } from "./ForestGenerator";
 
-const MAX_NEAREST_OBJ = 8
-const TEMP_RADIANCE = 280
+const MAX_NEAREST_OBJ = 8;
+const TEMP_RADIANCE = 250;
 
 export default class FlammableArea {
   constructor(flamables) {
@@ -9,6 +9,16 @@ export default class FlammableArea {
     this.setNearestForEach();
     this.prevTime = "";
   }
+
+  cleanFlamables = () => {
+    this.flamables.forEach((flamable) => flamable.fireEmitter.destroy());
+    this.flamables = [];
+  };
+
+  setFlamables = (flamables) => {
+    this.flamables = [...flamables];
+    this.setNearestForEach();
+  };
 
   push(flamables) {
     this.flamables = [...this.flamables, flamables];
@@ -18,33 +28,33 @@ export default class FlammableArea {
     return this.flamables;
   }
 
-  setNearestForEach(){
+  setNearestForEach() {
     this.flammables.forEach((flammable) => {
-      this.setNearest(flammable)
-    })
+      this.setNearest(flammable);
+    });
   }
 
   setDebug(bool) {
     this.flamables.forEach((flamable) => {
       flamable.debug = bool;
-    })
+    });
   }
 
   setNearest(flammable) {
-    const withDistances = []
+    const withDistances = [];
     this.flamables.forEach((neighbor) => {
       const a = flammable.x - neighbor.x;
       const b = flammable.y - neighbor.y;
-      const c = Math.round(Math.sqrt( a*a + b*b ));
-      withDistances.push({neighbor, distance: c})
-    })
+      const c = Math.round(Math.sqrt(a * a + b * b));
+      withDistances.push({ neighbor, distance: c });
+    });
 
-    const sorted = withDistances.sort((a, b) => a.distance - b.distance)
+    const sorted = withDistances.sort((a, b) => a.distance - b.distance);
     // start from 1, because 0 is the same object itself
-    const nearest = sorted.slice(1, MAX_NEAREST_OBJ + 1)
+    const nearest = sorted.slice(1, MAX_NEAREST_OBJ + 1);
 
-    flammable.nearest = nearest
-  } 
+    flammable.nearest = nearest;
+  }
 
   update() {
     //if ((new Date() - this.prevTime) < 1000) return
@@ -52,10 +62,12 @@ export default class FlammableArea {
       flammable.update();
       if (flammable.isBurning()) {
         //const temp = flammable.currentTemperature
-        flammable.nearest.forEach(({neighbor, distance}) => {
-          const tempRaise = TEMP_RADIANCE / (distance * 4 )
+        flammable.nearest.forEach(({ neighbor, distance }) => {
+          const tempRaise =
+            (TEMP_RADIANCE * (flammable.fireStrength / 5 + 1)) /
+            (distance * 4);
           neighbor.raiseTemperature(tempRaise);
-        })
+        });
         //this.setNearest(flammable)
       }
     });

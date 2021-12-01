@@ -60,7 +60,7 @@ export default class FlammableObj extends PIXI.Container {
 
   heatUp = () => {
     if (this.temperature < this.maxCombustionTemperature) {
-      this.temperature += 1;
+      this.temperature += 0.6;
     }
   };
 
