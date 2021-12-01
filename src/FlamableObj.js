@@ -4,20 +4,25 @@ import FireEmitter from "./FireEmitter";
 import TextLabel from "./TextLabel";
 const ENV_TEMPERATURE = 20; // degrees celsius
 
-export default class FlammableObj extends PIXI.Sprite {
+export default class FlammableObj extends PIXI.Container {
   constructor(texture, position, scale) {
-    super(PIXI.Texture.from(texture));
+    super();
+    //super(PIXI.Texture.from(texture));
     this.x = position.x;
     this.y = position.y;
-    this.angle = Math.random() * 360;
     this.sizeModifiier = Math.random() * 20 - 10;
-    this.anchor.set(0.5);
-    this.width = (64 + this.sizeModifiier) * scale;
-    this.height = (64 + this.sizeModifiier) * scale;
+    
+    this.sprite = new PIXI.Sprite(PIXI.Texture.from(texture));
+    this.sprite.anchor.set(0.5);
+    this.sprite.angle = Math.random() * 360;
+    this.sprite.width = (64 + this.sizeModifiier) * scale;
+    this.sprite.height = (64 + this.sizeModifiier) * scale;
+    
     this.interactive = true;
+    this.debug = true;
     // fire properties
     this._temperature = ENV_TEMPERATURE; // start temperature
-    this.decay = 1; // degrees celsius per update
+    this.decay = 0.5; // degrees celsius per update
     this.burnSpeed = 1 * scale;
     this.combustionStartTreshold = 300; // degrees celsius
     this.maxCombustionTemperature = 600; // degress celsius
@@ -28,16 +33,20 @@ export default class FlammableObj extends PIXI.Sprite {
     this.on("pointerdown", this.setOnFire);
     this.neighbors = [];
     this.fireEmitter = new FireEmitter();
-    this.textLabel = new TextLabel('Hey there 090234897');
+
+    this.textLabel = new TextLabel("");
+    this.textLabel.anchor = 0.5
+
     this.init();
     //this.radiance = 0;   // 0 - 100
     //this.filter = new PIXI.Filter(ColorOverlayFilter);
   }
-
+  
   init = () => {
     this.fireEmitter.updateOwnerPos(this.x, this.y);
-    this.addChild(this.textLabel)
-    console.log(this)
+
+    this.addChild(this.sprite);
+    this.addChild(this.textLabel);
   };
 
   shouldActivelyBurn = () => {
@@ -56,6 +65,12 @@ export default class FlammableObj extends PIXI.Sprite {
   };
 
   update = () => {
+    if (this.debug) {
+      this.textLabel.text = Math.round(this.temperature);
+    } else {
+      this.textLabel.text = "";
+    }
+
     const shouldBurn = this.shouldActivelyBurn();
     if (shouldBurn) {
       this.fireEmitter.emit = true;
@@ -91,14 +106,13 @@ export default class FlammableObj extends PIXI.Sprite {
   }
 
   burnVisually = () => {
-    this.tint = PIXI.utils.string2hex(
+    this.sprite.tint = PIXI.utils.string2hex(
       colord({ h: 0, s: 0, l: 100 - this.burntRatio * 65, a: 1 }).toHex()
     );
   };
 
   calculateBurntRatio = () => {
     this.burntRatio = 1 - this.fuel / this._fuelTotal;
-    //console.log('burnt -->',this.burntRatio)
   };
 
   consumeFuel = () => {

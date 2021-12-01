@@ -1,7 +1,7 @@
-import { SIZE_MULTIPLIER } from "./treesGenerator";
+import { SIZE_MULTIPLIER } from "./ForestGenerator";
 
 const MAX_NEAREST_OBJ = 8
-const TEMP_RADIANCE = 80
+const TEMP_RADIANCE = 280
 
 export default class FlammableArea {
   constructor(flamables) {
@@ -21,6 +21,12 @@ export default class FlammableArea {
   setNearestForEach(){
     this.flammables.forEach((flammable) => {
       this.setNearest(flammable)
+    })
+  }
+
+  setDebug(bool) {
+    this.flamables.forEach((flamable) => {
+      flamable.debug = bool;
     })
   }
 
@@ -47,7 +53,8 @@ export default class FlammableArea {
       if (flammable.isBurning()) {
         //const temp = flammable.currentTemperature
         flammable.nearest.forEach(({neighbor, distance}) => {
-          neighbor.raiseTemperature(TEMP_RADIANCE / (distance * 1.2));
+          const tempRaise = TEMP_RADIANCE / (distance * 4 )
+          neighbor.raiseTemperature(tempRaise);
         })
         //this.setNearest(flammable)
       }
