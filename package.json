@@ -1,0 +1,25 @@
+{
+  "name": "fire-sim",
+  "version": "1.0.0",
+  "description": "",
+  "main": "script.js",
+  "scripts": {
+    "dev": "webpack serve",
+    "watch": "webpack watch",
+    "build": "webpack",
+    "build-production": "NODE_ENV=production webpack --mode=production"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@pixi/particle-emitter": "^5.0.2",
+    "colord": "^2.9.1",
+    "fabric": "^4.6.0",
+    "pixi.js": "^6.2.0",
+    "webpack": "^5.64.4",
+    "webpack-cli": "^4.9.1"
+  },
+  "devDependencies": {
+    "webpack-dev-server": "^4.6.0"
+  }
+}
