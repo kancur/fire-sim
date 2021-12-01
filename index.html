@@ -6,13 +6,18 @@
     <title></title>
     <meta name="description" content="" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <link rel="stylesheet" href="" />
   </head>
-  <body style="margin: 0;">
-    <div><label>
-      Debug
-      <input id="debug" type="checkbox" />
-    </label>
+  <body style="margin: 0">
+    <div class="settings">
+      <label>
+        Show temperature (˚C)
+        <input id="debug" type="checkbox" />
+      </label>
+      <label>
+        Forest density: <span id="density-display"></span>
+        <input id="density" type="range" min="0.05" max="1" step="0.05" />
+      </label>
+      <button type="button" id="generate">Generate new forest</button>
     </div>
     <script src="./bundle.js" async defer></script>
   </body>

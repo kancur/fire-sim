@@ -44391,6 +44391,177 @@ if (true) {
 
 /***/ }),
 
+/***/ "./node_modules/css-loader/dist/cjs.js!./src/style.css":
+/*!*************************************************************!*\
+  !*** ./node_modules/css-loader/dist/cjs.js!./src/style.css ***!
+  \*************************************************************/
+/***/ ((module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _node_modules_css_loader_dist_runtime_sourceMaps_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../node_modules/css-loader/dist/runtime/sourceMaps.js */ "./node_modules/css-loader/dist/runtime/sourceMaps.js");
+/* harmony import */ var _node_modules_css_loader_dist_runtime_sourceMaps_js__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_css_loader_dist_runtime_sourceMaps_js__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../node_modules/css-loader/dist/runtime/api.js */ "./node_modules/css-loader/dist/runtime/api.js");
+/* harmony import */ var _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1__);
+// Imports
+
+
+var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1___default()((_node_modules_css_loader_dist_runtime_sourceMaps_js__WEBPACK_IMPORTED_MODULE_0___default()));
+// Module
+___CSS_LOADER_EXPORT___.push([module.id, "html {\n  overflow-x: hidden;\n}\ncanvas {\n  display: block;\n}\n\n.settings {\n  display: fixed;\n}", "",{"version":3,"sources":["webpack://./src/style.css"],"names":[],"mappings":"AAAA;EACE,kBAAkB;AACpB;AACA;EACE,cAAc;AAChB;;AAEA;EACE,cAAc;AAChB","sourcesContent":["html {\n  overflow-x: hidden;\n}\ncanvas {\n  display: block;\n}\n\n.settings {\n  display: fixed;\n}"],"sourceRoot":""}]);
+// Exports
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
+
+
+/***/ }),
+
+/***/ "./node_modules/css-loader/dist/runtime/api.js":
+/*!*****************************************************!*\
+  !*** ./node_modules/css-loader/dist/runtime/api.js ***!
+  \*****************************************************/
+/***/ ((module) => {
+
+"use strict";
+
+
+/*
+  MIT License http://www.opensource.org/licenses/mit-license.php
+  Author Tobias Koppers @sokra
+*/
+module.exports = function (cssWithMappingToString) {
+  var list = []; // return the list of modules as css string
+
+  list.toString = function toString() {
+    return this.map(function (item) {
+      var content = "";
+      var needLayer = typeof item[5] !== "undefined";
+
+      if (item[4]) {
+        content += "@supports (".concat(item[4], ") {");
+      }
+
+      if (item[2]) {
+        content += "@media ".concat(item[2], " {");
+      }
+
+      if (needLayer) {
+        content += "@layer".concat(item[5].length > 0 ? " ".concat(item[5]) : "", " {");
+      }
+
+      content += cssWithMappingToString(item);
+
+      if (needLayer) {
+        content += "}";
+      }
+
+      if (item[2]) {
+        content += "}";
+      }
+
+      if (item[4]) {
+        content += "}";
+      }
+
+      return content;
+    }).join("");
+  }; // import a list of modules into the list
+
+
+  list.i = function i(modules, media, dedupe, supports, layer) {
+    if (typeof modules === "string") {
+      modules = [[null, modules, undefined]];
+    }
+
+    var alreadyImportedModules = {};
+
+    if (dedupe) {
+      for (var k = 0; k < this.length; k++) {
+        var id = this[k][0];
+
+        if (id != null) {
+          alreadyImportedModules[id] = true;
+        }
+      }
+    }
+
+    for (var _k = 0; _k < modules.length; _k++) {
+      var item = [].concat(modules[_k]);
+
+      if (dedupe && alreadyImportedModules[item[0]]) {
+        continue;
+      }
+
+      if (typeof layer !== "undefined") {
+        if (typeof item[5] === "undefined") {
+          item[5] = layer;
+        } else {
+          item[1] = "@layer".concat(item[5].length > 0 ? " ".concat(item[5]) : "", " {").concat(item[1], "}");
+          item[5] = layer;
+        }
+      }
+
+      if (media) {
+        if (!item[2]) {
+          item[2] = media;
+        } else {
+          item[1] = "@media ".concat(item[2], " {").concat(item[1], "}");
+          item[2] = media;
+        }
+      }
+
+      if (supports) {
+        if (!item[4]) {
+          item[4] = "".concat(supports);
+        } else {
+          item[1] = "@supports (".concat(item[4], ") {").concat(item[1], "}");
+          item[4] = supports;
+        }
+      }
+
+      list.push(item);
+    }
+  };
+
+  return list;
+};
+
+/***/ }),
+
+/***/ "./node_modules/css-loader/dist/runtime/sourceMaps.js":
+/*!************************************************************!*\
+  !*** ./node_modules/css-loader/dist/runtime/sourceMaps.js ***!
+  \************************************************************/
+/***/ ((module) => {
+
+"use strict";
+
+
+module.exports = function (item) {
+  var content = item[1];
+  var cssMapping = item[3];
+
+  if (!cssMapping) {
+    return content;
+  }
+
+  if (typeof btoa === "function") {
+    var base64 = btoa(unescape(encodeURIComponent(JSON.stringify(cssMapping))));
+    var data = "sourceMappingURL=data:application/json;charset=utf-8;base64,".concat(base64);
+    var sourceMapping = "/*# ".concat(data, " */");
+    var sourceURLs = cssMapping.sources.map(function (source) {
+      return "/*# sourceURL=".concat(cssMapping.sourceRoot || "").concat(source, " */");
+    });
+    return [content].concat(sourceURLs).concat([sourceMapping]).join("\n");
+  }
+
+  return [content].join("\n");
+};
+
+/***/ }),
+
 /***/ "./node_modules/earcut/src/earcut.js":
 /*!*******************************************!*\
   !*** ./node_modules/earcut/src/earcut.js ***!
@@ -46260,6 +46431,373 @@ exports.encode = exports.stringify = __webpack_require__(/*! ./encode */ "./node
 
 /***/ }),
 
+/***/ "./src/style.css":
+/*!***********************!*\
+  !*** ./src/style.css ***!
+  \***********************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! !../node_modules/style-loader/dist/runtime/injectStylesIntoStyleTag.js */ "./node_modules/style-loader/dist/runtime/injectStylesIntoStyleTag.js");
+/* harmony import */ var _node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _node_modules_style_loader_dist_runtime_styleDomAPI_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! !../node_modules/style-loader/dist/runtime/styleDomAPI.js */ "./node_modules/style-loader/dist/runtime/styleDomAPI.js");
+/* harmony import */ var _node_modules_style_loader_dist_runtime_styleDomAPI_js__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_node_modules_style_loader_dist_runtime_styleDomAPI_js__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _node_modules_style_loader_dist_runtime_insertBySelector_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! !../node_modules/style-loader/dist/runtime/insertBySelector.js */ "./node_modules/style-loader/dist/runtime/insertBySelector.js");
+/* harmony import */ var _node_modules_style_loader_dist_runtime_insertBySelector_js__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_node_modules_style_loader_dist_runtime_insertBySelector_js__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var _node_modules_style_loader_dist_runtime_setAttributesWithoutAttributes_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! !../node_modules/style-loader/dist/runtime/setAttributesWithoutAttributes.js */ "./node_modules/style-loader/dist/runtime/setAttributesWithoutAttributes.js");
+/* harmony import */ var _node_modules_style_loader_dist_runtime_setAttributesWithoutAttributes_js__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_node_modules_style_loader_dist_runtime_setAttributesWithoutAttributes_js__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var _node_modules_style_loader_dist_runtime_insertStyleElement_js__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! !../node_modules/style-loader/dist/runtime/insertStyleElement.js */ "./node_modules/style-loader/dist/runtime/insertStyleElement.js");
+/* harmony import */ var _node_modules_style_loader_dist_runtime_insertStyleElement_js__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(_node_modules_style_loader_dist_runtime_insertStyleElement_js__WEBPACK_IMPORTED_MODULE_4__);
+/* harmony import */ var _node_modules_style_loader_dist_runtime_styleTagTransform_js__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! !../node_modules/style-loader/dist/runtime/styleTagTransform.js */ "./node_modules/style-loader/dist/runtime/styleTagTransform.js");
+/* harmony import */ var _node_modules_style_loader_dist_runtime_styleTagTransform_js__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(_node_modules_style_loader_dist_runtime_styleTagTransform_js__WEBPACK_IMPORTED_MODULE_5__);
+/* harmony import */ var _node_modules_css_loader_dist_cjs_js_style_css__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! !!../node_modules/css-loader/dist/cjs.js!./style.css */ "./node_modules/css-loader/dist/cjs.js!./src/style.css");
+
+      
+      
+      
+      
+      
+      
+      
+      
+      
+
+var options = {};
+
+options.styleTagTransform = (_node_modules_style_loader_dist_runtime_styleTagTransform_js__WEBPACK_IMPORTED_MODULE_5___default());
+options.setAttributes = (_node_modules_style_loader_dist_runtime_setAttributesWithoutAttributes_js__WEBPACK_IMPORTED_MODULE_3___default());
+
+      options.insert = _node_modules_style_loader_dist_runtime_insertBySelector_js__WEBPACK_IMPORTED_MODULE_2___default().bind(null, "head");
+    
+options.domAPI = (_node_modules_style_loader_dist_runtime_styleDomAPI_js__WEBPACK_IMPORTED_MODULE_1___default());
+options.insertStyleElement = (_node_modules_style_loader_dist_runtime_insertStyleElement_js__WEBPACK_IMPORTED_MODULE_4___default());
+
+var update = _node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0___default()(_node_modules_css_loader_dist_cjs_js_style_css__WEBPACK_IMPORTED_MODULE_6__["default"], options);
+
+
+
+
+       /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (_node_modules_css_loader_dist_cjs_js_style_css__WEBPACK_IMPORTED_MODULE_6__["default"] && _node_modules_css_loader_dist_cjs_js_style_css__WEBPACK_IMPORTED_MODULE_6__["default"].locals ? _node_modules_css_loader_dist_cjs_js_style_css__WEBPACK_IMPORTED_MODULE_6__["default"].locals : undefined);
+
+
+/***/ }),
+
+/***/ "./node_modules/style-loader/dist/runtime/injectStylesIntoStyleTag.js":
+/*!****************************************************************************!*\
+  !*** ./node_modules/style-loader/dist/runtime/injectStylesIntoStyleTag.js ***!
+  \****************************************************************************/
+/***/ ((module) => {
+
+"use strict";
+
+
+var stylesInDOM = [];
+
+function getIndexByIdentifier(identifier) {
+  var result = -1;
+
+  for (var i = 0; i < stylesInDOM.length; i++) {
+    if (stylesInDOM[i].identifier === identifier) {
+      result = i;
+      break;
+    }
+  }
+
+  return result;
+}
+
+function modulesToDom(list, options) {
+  var idCountMap = {};
+  var identifiers = [];
+
+  for (var i = 0; i < list.length; i++) {
+    var item = list[i];
+    var id = options.base ? item[0] + options.base : item[0];
+    var count = idCountMap[id] || 0;
+    var identifier = "".concat(id, " ").concat(count);
+    idCountMap[id] = count + 1;
+    var indexByIdentifier = getIndexByIdentifier(identifier);
+    var obj = {
+      css: item[1],
+      media: item[2],
+      sourceMap: item[3],
+      supports: item[4],
+      layer: item[5]
+    };
+
+    if (indexByIdentifier !== -1) {
+      stylesInDOM[indexByIdentifier].references++;
+      stylesInDOM[indexByIdentifier].updater(obj);
+    } else {
+      var updater = addElementStyle(obj, options);
+      options.byIndex = i;
+      stylesInDOM.splice(i, 0, {
+        identifier: identifier,
+        updater: updater,
+        references: 1
+      });
+    }
+
+    identifiers.push(identifier);
+  }
+
+  return identifiers;
+}
+
+function addElementStyle(obj, options) {
+  var api = options.domAPI(options);
+  api.update(obj);
+
+  var updater = function updater(newObj) {
+    if (newObj) {
+      if (newObj.css === obj.css && newObj.media === obj.media && newObj.sourceMap === obj.sourceMap && newObj.supports === obj.supports && newObj.layer === obj.layer) {
+        return;
+      }
+
+      api.update(obj = newObj);
+    } else {
+      api.remove();
+    }
+  };
+
+  return updater;
+}
+
+module.exports = function (list, options) {
+  options = options || {};
+  list = list || [];
+  var lastIdentifiers = modulesToDom(list, options);
+  return function update(newList) {
+    newList = newList || [];
+
+    for (var i = 0; i < lastIdentifiers.length; i++) {
+      var identifier = lastIdentifiers[i];
+      var index = getIndexByIdentifier(identifier);
+      stylesInDOM[index].references--;
+    }
+
+    var newLastIdentifiers = modulesToDom(newList, options);
+
+    for (var _i = 0; _i < lastIdentifiers.length; _i++) {
+      var _identifier = lastIdentifiers[_i];
+
+      var _index = getIndexByIdentifier(_identifier);
+
+      if (stylesInDOM[_index].references === 0) {
+        stylesInDOM[_index].updater();
+
+        stylesInDOM.splice(_index, 1);
+      }
+    }
+
+    lastIdentifiers = newLastIdentifiers;
+  };
+};
+
+/***/ }),
+
+/***/ "./node_modules/style-loader/dist/runtime/insertBySelector.js":
+/*!********************************************************************!*\
+  !*** ./node_modules/style-loader/dist/runtime/insertBySelector.js ***!
+  \********************************************************************/
+/***/ ((module) => {
+
+"use strict";
+
+
+var memo = {};
+/* istanbul ignore next  */
+
+function getTarget(target) {
+  if (typeof memo[target] === "undefined") {
+    var styleTarget = document.querySelector(target); // Special case to return head of iframe instead of iframe itself
+
+    if (window.HTMLIFrameElement && styleTarget instanceof window.HTMLIFrameElement) {
+      try {
+        // This will throw an exception if access to iframe is blocked
+        // due to cross-origin restrictions
+        styleTarget = styleTarget.contentDocument.head;
+      } catch (e) {
+        // istanbul ignore next
+        styleTarget = null;
+      }
+    }
+
+    memo[target] = styleTarget;
+  }
+
+  return memo[target];
+}
+/* istanbul ignore next  */
+
+
+function insertBySelector(insert, style) {
+  var target = getTarget(insert);
+
+  if (!target) {
+    throw new Error("Couldn't find a style target. This probably means that the value for the 'insert' parameter is invalid.");
+  }
+
+  target.appendChild(style);
+}
+
+module.exports = insertBySelector;
+
+/***/ }),
+
+/***/ "./node_modules/style-loader/dist/runtime/insertStyleElement.js":
+/*!**********************************************************************!*\
+  !*** ./node_modules/style-loader/dist/runtime/insertStyleElement.js ***!
+  \**********************************************************************/
+/***/ ((module) => {
+
+"use strict";
+
+
+/* istanbul ignore next  */
+function insertStyleElement(options) {
+  var element = document.createElement("style");
+  options.setAttributes(element, options.attributes);
+  options.insert(element, options.options);
+  return element;
+}
+
+module.exports = insertStyleElement;
+
+/***/ }),
+
+/***/ "./node_modules/style-loader/dist/runtime/setAttributesWithoutAttributes.js":
+/*!**********************************************************************************!*\
+  !*** ./node_modules/style-loader/dist/runtime/setAttributesWithoutAttributes.js ***!
+  \**********************************************************************************/
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+"use strict";
+
+
+/* istanbul ignore next  */
+function setAttributesWithoutAttributes(styleElement) {
+  var nonce =  true ? __webpack_require__.nc : 0;
+
+  if (nonce) {
+    styleElement.setAttribute("nonce", nonce);
+  }
+}
+
+module.exports = setAttributesWithoutAttributes;
+
+/***/ }),
+
+/***/ "./node_modules/style-loader/dist/runtime/styleDomAPI.js":
+/*!***************************************************************!*\
+  !*** ./node_modules/style-loader/dist/runtime/styleDomAPI.js ***!
+  \***************************************************************/
+/***/ ((module) => {
+
+"use strict";
+
+
+/* istanbul ignore next  */
+function apply(styleElement, options, obj) {
+  var css = "";
+
+  if (obj.supports) {
+    css += "@supports (".concat(obj.supports, ") {");
+  }
+
+  if (obj.media) {
+    css += "@media ".concat(obj.media, " {");
+  }
+
+  var needLayer = typeof obj.layer !== "undefined";
+
+  if (needLayer) {
+    css += "@layer".concat(obj.layer.length > 0 ? " ".concat(obj.layer) : "", " {");
+  }
+
+  css += obj.css;
+
+  if (needLayer) {
+    css += "}";
+  }
+
+  if (obj.media) {
+    css += "}";
+  }
+
+  if (obj.supports) {
+    css += "}";
+  }
+
+  var sourceMap = obj.sourceMap;
+
+  if (sourceMap && typeof btoa !== "undefined") {
+    css += "\n/*# sourceMappingURL=data:application/json;base64,".concat(btoa(unescape(encodeURIComponent(JSON.stringify(sourceMap)))), " */");
+  } // For old IE
+
+  /* istanbul ignore if  */
+
+
+  options.styleTagTransform(css, styleElement, options.options);
+}
+
+function removeStyleElement(styleElement) {
+  // istanbul ignore if
+  if (styleElement.parentNode === null) {
+    return false;
+  }
+
+  styleElement.parentNode.removeChild(styleElement);
+}
+/* istanbul ignore next  */
+
+
+function domAPI(options) {
+  var styleElement = options.insertStyleElement(options);
+  return {
+    update: function update(obj) {
+      apply(styleElement, options, obj);
+    },
+    remove: function remove() {
+      removeStyleElement(styleElement);
+    }
+  };
+}
+
+module.exports = domAPI;
+
+/***/ }),
+
+/***/ "./node_modules/style-loader/dist/runtime/styleTagTransform.js":
+/*!*********************************************************************!*\
+  !*** ./node_modules/style-loader/dist/runtime/styleTagTransform.js ***!
+  \*********************************************************************/
+/***/ ((module) => {
+
+"use strict";
+
+
+/* istanbul ignore next  */
+function styleTagTransform(css, styleElement) {
+  if (styleElement.styleSheet) {
+    styleElement.styleSheet.cssText = css;
+  } else {
+    while (styleElement.firstChild) {
+      styleElement.removeChild(styleElement.firstChild);
+    }
+
+    styleElement.appendChild(document.createTextNode(css));
+  }
+}
+
+module.exports = styleTagTransform;
+
+/***/ }),
+
 /***/ "./node_modules/url/node_modules/punycode/punycode.js":
 /*!************************************************************!*\
   !*** ./node_modules/url/node_modules/punycode/punycode.js ***!
@@ -47560,6 +48098,331 @@ module.exports = {
 
 /***/ }),
 
+/***/ "./src/FireEmitter.js":
+/*!****************************!*\
+  !*** ./src/FireEmitter.js ***!
+  \****************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (/* binding */ FireEmitter)
+/* harmony export */ });
+/* harmony import */ var pixi_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! pixi.js */ "./node_modules/pixi.js/dist/esm/pixi.js");
+/* harmony import */ var _pixi_particle_emitter__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @pixi/particle-emitter */ "./node_modules/@pixi/particle-emitter/lib/particle-emitter.es.js");
+/* harmony import */ var _assets_fire_png__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./assets/fire.png */ "./src/assets/fire.png");
+/* harmony import */ var _particleContainer__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./particleContainer */ "./src/particleContainer.js");
+
+
+
+
+
+class FireEmitter extends _pixi_particle_emitter__WEBPACK_IMPORTED_MODULE_1__.Emitter {
+  constructor() {
+    super(_particleContainer__WEBPACK_IMPORTED_MODULE_3__.particleContainer, {
+      lifetime: {
+        min: 1,
+        max: 1.5,
+      },
+      frequency: 0.15,
+      emitterLifetime: 0,
+      maxParticles: 1000,
+      addAtBack: false,
+      pos: {
+        x: 0,
+        y: 0,
+      },
+      behaviors: [
+        {
+          type: "alpha",
+          config: {
+            alpha: {
+              list: [
+                {
+                  time: 0,
+                  value: 0,
+                },
+                {
+                  time: 0.1,
+                  value: 1,
+                },
+                {
+                  time: 1,
+                  value: 0,
+                },
+              ],
+            },
+          },
+        },
+        /*       {
+            type: "moveSpeedStatic",
+            config: {
+              min: 0,
+              max: 50,
+            },
+          }, */
+        {
+          type: "scale",
+          config: {
+            scale: {
+              list: [
+                {
+                  time: 0,
+                  value: 0.3,
+                },
+                {
+                  time: 1,
+                  value: 1,
+                },
+              ],
+            },
+            minMult: 0.5,
+          },
+        },
+        {
+          type: "color",
+          config: {
+            color: {
+              list: [
+                {
+                  time: 0,
+                  value: "f7cf60",
+                },
+                {
+                  time: 0.2,
+                  value: "ff9000",
+                },
+                {
+                  time: 1,
+                  value: "666666",
+                },
+              ],
+            },
+          },
+        },
+        {
+          type: "rotation",
+          config: {
+            accel: 0,
+            minSpeed: -50,
+            maxSpeed: 50,
+            minStart: 0,
+            maxStart: 360,
+          },
+        },
+        {
+          type: "textureSingle",
+          config: {
+            texture: pixi_js__WEBPACK_IMPORTED_MODULE_0__.Texture.from(_assets_fire_png__WEBPACK_IMPORTED_MODULE_2__),
+          },
+        },
+        {
+          type: "spawnShape",
+          config: {
+            type: "torus",
+            data: {
+              x: 0,
+              y: 0,
+              radius: 20,
+              innerRadius: 0,
+              affectRotation: false,
+            },
+          },
+        },
+      ],
+    });
+    this.emit = false;
+    this.autoUpdate = true;
+  }
+}
+
+
+/***/ }),
+
+/***/ "./src/FlamableObj.js":
+/*!****************************!*\
+  !*** ./src/FlamableObj.js ***!
+  \****************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (/* binding */ FlammableObj)
+/* harmony export */ });
+/* harmony import */ var pixi_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! pixi.js */ "./node_modules/pixi.js/dist/esm/pixi.js");
+/* harmony import */ var colord__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! colord */ "./node_modules/colord/index.mjs");
+/* harmony import */ var _FireEmitter__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./FireEmitter */ "./src/FireEmitter.js");
+/* harmony import */ var _TextLabel__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./TextLabel */ "./src/TextLabel.js");
+
+
+
+
+const ENV_TEMPERATURE = 20; // degrees celsius
+
+class FlammableObj extends pixi_js__WEBPACK_IMPORTED_MODULE_0__.Container {
+  constructor(texture, position, scale) {
+    super();
+    //super(PIXI.Texture.from(texture));
+    this.x = position.x;
+    this.y = position.y;
+    this.sizeModifiier = Math.random() * 20 - 10;
+    
+    this.sprite = new pixi_js__WEBPACK_IMPORTED_MODULE_0__.Sprite(pixi_js__WEBPACK_IMPORTED_MODULE_0__.Texture.from(texture));
+    this.sprite.anchor.set(0.5);
+    this.sprite.angle = Math.random() * 360;
+    this.sprite.width = (64 + this.sizeModifiier) * scale;
+    this.sprite.height = (64 + this.sizeModifiier) * scale;
+    
+    this.interactive = true;
+    this.debug = true;
+    // fire properties
+    this._temperature = ENV_TEMPERATURE; // start temperature
+    this.decay = 0.5; // degrees celsius per update
+    this.burnSpeed = 1 * scale;
+    this.combustionStartTreshold = 300; // degrees celsius
+    this.maxCombustionTemperature = 600; // degress celsius
+    this._fuelTotal = 200 * scale; // amount of total fuel, no unit
+    this._fuelCurrent = 200 * scale; // amount of fuel remaining
+    this._fireStrength = 0;
+    this.burntRatio = 0;
+    this.on("pointerdown", this.setOnFire);
+    this.neighbors = [];
+    this.fireEmitter = new _FireEmitter__WEBPACK_IMPORTED_MODULE_1__["default"]();
+
+    this.textLabel = new _TextLabel__WEBPACK_IMPORTED_MODULE_2__["default"]("");
+    this.textLabel.anchor = 0.5
+
+    this.init();
+    //this.radiance = 0;   // 0 - 100
+    //this.filter = new PIXI.Filter(ColorOverlayFilter);
+  }
+  
+  init = () => {
+    this.fireEmitter.updateOwnerPos(this.x, this.y);
+
+    this.addChild(this.sprite);
+    this.addChild(this.textLabel);
+  };
+
+  shouldActivelyBurn = () => {
+    if (this.fuel) {
+      if (this.temperature >= this.combustionStartTreshold) {
+        return true;
+      }
+    }
+    return false;
+  };
+
+  heatUp = () => {
+    if (this.temperature < this.maxCombustionTemperature) {
+      this.temperature += 1;
+    }
+  };
+
+  update = () => {
+    if (this.debug) {
+      this.textLabel.text = Math.round(this.temperature);
+    } else {
+      this.textLabel.text = "";
+    }
+
+    const shouldBurn = this.shouldActivelyBurn();
+    if (shouldBurn) {
+      this.fireEmitter.emit = true;
+      this.heatUp();
+      this.consumeFuel();
+      this.calculateBurntRatio();
+      this.calculateFireStrength();
+      this.burnVisually();
+    } else {
+      this.fireEmitter.emit = false;
+      this.decayTemperature();
+    }
+  };
+
+  set fuel(amount) {
+    if (amount < 0) {
+      this._fuelCurrent = 0;
+      return;
+    }
+    this._fuelCurrent = Math.round(amount * 100) / 100;
+  }
+
+  get fuel() {
+    return this._fuelCurrent;
+  }
+
+  set fireStrength(amount) {
+    this._fireStrength = Math.round(amount * 100) / 100;
+  }
+
+  get fireStrength() {
+    return this._fireStrength;
+  }
+
+  burnVisually = () => {
+    this.sprite.tint = pixi_js__WEBPACK_IMPORTED_MODULE_0__.utils.string2hex(
+      (0,colord__WEBPACK_IMPORTED_MODULE_3__.colord)({ h: 0, s: 0, l: 100 - this.burntRatio * 65, a: 1 }).toHex()
+    );
+  };
+
+  calculateBurntRatio = () => {
+    this.burntRatio = 1 - this.fuel / this._fuelTotal;
+  };
+
+  consumeFuel = () => {
+    this.fuel -= this.fireStrength * this.burnSpeed;
+  };
+
+  decayTemperature = () => {
+    if (this.temperature >= ENV_TEMPERATURE) {
+      if (this.temperature >= this.combustionStartTreshold && !this.fuel) {
+        this.temperature -= this.decay;
+      }
+      if (this.temperature < this.combustionStartTreshold) {
+        this.temperature -= this.decay;
+      }
+    }
+  };
+
+  setOnFire = () => {
+    this.temperature = 300;
+  };
+
+  raiseTemperature = (degrees) => {
+    if (!this.fuel) return;
+    if (this.temperature <= this.maxCombustionTemperature) {
+      this.temperature = this.temperature + degrees;
+    }
+  };
+
+  isBurning = () => this.shouldActivelyBurn();
+
+  get temperature() {
+    return this._temperature;
+  }
+
+  set temperature(temperature) {
+    if (temperature < ENV_TEMPERATURE) return;
+    if (temperature > this.maxCombustionTemperature) return;
+    this._temperature = Math.round(temperature * 100) / 100;
+  }
+
+  calculateFireStrength = () => {
+    const divisor =
+      this.maxCombustionTemperature - this.combustionStartTreshold;
+    if (divisor > 0) {
+      this.fireStrength =
+        (this.temperature - this.combustionStartTreshold) / divisor;
+    }
+  };
+}
+
+
+/***/ }),
+
 /***/ "./src/FlammableArea.js":
 /*!******************************!*\
   !*** ./src/FlammableArea.js ***!
@@ -47571,7 +48434,11 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (/* binding */ FlammableArea)
 /* harmony export */ });
-const MAX_NEAREST_OBJ = 5
+/* harmony import */ var _ForestGenerator__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./ForestGenerator */ "./src/ForestGenerator.js");
+
+
+const MAX_NEAREST_OBJ = 8
+const TEMP_RADIANCE = 280
 
 class FlammableArea {
   constructor(flamables) {
@@ -47591,6 +48458,12 @@ class FlammableArea {
   setNearestForEach(){
     this.flammables.forEach((flammable) => {
       this.setNearest(flammable)
+    })
+  }
+
+  setDebug(bool) {
+    this.flamables.forEach((flamable) => {
+      flamable.debug = bool;
     })
   }
 
@@ -47617,7 +48490,8 @@ class FlammableArea {
       if (flammable.isBurning()) {
         //const temp = flammable.currentTemperature
         flammable.nearest.forEach(({neighbor, distance}) => {
-          neighbor.raiseTemperature(100 / distance);
+          const tempRaise = TEMP_RADIANCE / (distance * 4 )
+          neighbor.raiseTemperature(tempRaise);
         })
         //this.setNearest(flammable)
       }
@@ -47630,156 +48504,116 @@ class FlammableArea {
 
 /***/ }),
 
-/***/ "./src/flamableObj.js":
-/*!****************************!*\
-  !*** ./src/flamableObj.js ***!
-  \****************************/
+/***/ "./src/ForestGenerator.js":
+/*!********************************!*\
+  !*** ./src/ForestGenerator.js ***!
+  \********************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (/* binding */ FlammableObj)
+/* harmony export */   "default": () => (/* binding */ ForestGenerator)
+/* harmony export */ });
+/* harmony import */ var _assets_tree_png__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./assets/tree.png */ "./src/assets/tree.png");
+/* harmony import */ var _FlamableObj__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./FlamableObj */ "./src/FlamableObj.js");
+
+
+
+class ForestGenerator {
+  constructor(dimensions = {height: 80, width: 80}) {
+    this.spacePerTree = 40; // square with 40 pixels long edge
+    this.rows = Math.round(dimensions.height / this.spacePerTree);
+    this.cols = Math.round(dimensions.width / this.spacePerTree);
+    console.log(this.rows)
+    this.SIZE_MULTIPLIER = 1;
+    this.DENSITY = 1;
+    this.randomness = 70; // pixels
+    this.trees = [];
+    this.generateTrees();
+  }
+
+  generateTrees = () => {
+    for (let row = 1; row <= this.cols; row++) {
+      for (let col = 1; col <= this.rows; col++) {
+        const position = {
+          x:
+            row * this.spacePerTree * this.SIZE_MULTIPLIER +
+            Math.floor(Math.random() * this.randomness * this.SIZE_MULTIPLIER),
+          y:
+            col * this.spacePerTree * this.SIZE_MULTIPLIER +
+            Math.floor(Math.random() * this.randomness * this.SIZE_MULTIPLIER),
+        };
+        if (Math.random() < this.DENSITY) {
+          const tree = new _FlamableObj__WEBPACK_IMPORTED_MODULE_1__["default"](_assets_tree_png__WEBPACK_IMPORTED_MODULE_0__, position, this.SIZE_MULTIPLIER);
+          this.trees.push(tree);
+        }
+      }
+    }
+  };
+}
+
+/* const trees = []
+
+const MAX_COLS = 30
+const MAX_ROWS = 30
+const DENSITY = 0.5 // probability of tree appearing
+
+export const SIZE_MULTIPLIER = 1
+
+for (let row = 1; row <= MAX_COLS; row++){
+  for (let col = 1; col <= MAX_ROWS; col++){
+    const position = {
+      x: (row * 40 * SIZE_MULTIPLIER) + Math.floor(Math.random() * 70 * SIZE_MULTIPLIER),
+      y: (col * 40 * SIZE_MULTIPLIER) + Math.floor(Math.random() * 70 * SIZE_MULTIPLIER),
+    }
+    if (Math.random() < DENSITY) {
+      const tree = new FlammableObj(Tree, position, SIZE_MULTIPLIER);    
+      trees.push(tree);
+      console.log('pushing tree', tree)
+    }
+  }
+} */
+
+
+/***/ }),
+
+/***/ "./src/TextLabel.js":
+/*!**************************!*\
+  !*** ./src/TextLabel.js ***!
+  \**************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (/* binding */ TextLabel)
 /* harmony export */ });
 /* harmony import */ var pixi_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! pixi.js */ "./node_modules/pixi.js/dist/esm/pixi.js");
-/* harmony import */ var colord__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! colord */ "./node_modules/colord/index.mjs");
 
 
 
-const ENV_TEMPERATURE = 20; // degrees celsius
-
-class FlammableObj extends pixi_js__WEBPACK_IMPORTED_MODULE_0__.Sprite {
-  constructor(texture) {
-    super(pixi_js__WEBPACK_IMPORTED_MODULE_0__.Texture.from(texture));
-    this.angle = Math.random() * 360;
-    this.sizeModifiier = Math.random() * 20 - 10;
-    this.anchor.set(0.5);
-    this.width = 64 + this.sizeModifiier;
-    this.height = 64 + this.sizeModifiier;
-    this.interactive = true;
-    // fire properties
-    this._temperature = ENV_TEMPERATURE; // start temperature
-    this.decay = 2; // degrees celsius per update
-    this.combustionStartTreshold = 300; // degrees celsius
-    this.maxCombustionTemperature = 600; // degress celsius
-    this._fuelTotal = 200; // amount of total fuel, no unit
-    this._fuelCurrent = 200; // amount of fuel remaining
-    this._fireStrength = 0;
-    this.burntRatio = 0;
-    this.on("pointerdown", this.setOnFire);
-    this.neighbors = [];
-    //this.radiance = 0;   // 0 - 100
-    //this.filter = new PIXI.Filter(ColorOverlayFilter);
-  }
-
-  update = () => {
-    if (
-      this.temperature >= this.combustionStartTreshold &&
-      this.temperature < this.maxCombustionTemperature
-    ) {
-      if (this.fuel) {
-        this.temperature += 1;
-      }
-    }
-
-    this.fireStrength = calculateFireStrength(
-      this.combustionStartTreshold,
-      this.temperature,
-      this.maxCombustionTemperature
-    );
-
-    this.decayTemperature();
-    this.consumeFuel();
-    this.calculateBurntRatio();
-
-    let luminance = 100;
-    if (this.fireStrength > 0) {
-      luminance = 100 - this.fireStrength * 50;
-    } else if (this.burntRatio > 0) {
-      luminance = 1 - this.burntRatio;
-    }
-    this.tint = pixi_js__WEBPACK_IMPORTED_MODULE_0__.utils.string2hex(
-      (0,colord__WEBPACK_IMPORTED_MODULE_1__.colord)({ h: 0, s: 100, l: luminance, a: 1 }).toHex()
-    );
-  };
-
-  set fuel(amount) {
-    if (amount < 0) {
-      this._fuelCurrent = 0;
-      return;
-    }
-    this._fuelCurrent = Math.round(amount * 100) / 100;
-  }
-
-  get fuel() {
-    return this._fuelCurrent;
-  }
-
-  set fireStrength(amount) {
-    this._fireStrength = Math.round(amount * 100) / 100;
-  }
-
-  get fireStrength() {
-    return this._fireStrength;
-  }
-
-  calculateBurntRatio = () => {
-    this.burntRatio = 1 - this.fuel / this._fuelTotal;
-    //console.log('burnt -->',this.burntRatio)
-  };
-
-  consumeFuel = () => {
-    this.fuel -= this.fireStrength * 1;
-  };
-
-  decayTemperature = () => {
-    if (this.temperature >= ENV_TEMPERATURE) {
-      if (this.temperature >= this.combustionStartTreshold && !this.fuel) {
-        this.temperature -= this.decay;
-      }
-      if (this.temperature < this.combustionStartTreshold) {
-        this.temperature -= this.decay;
-      }
-    }
-  };
-
-  setOnFire = () => {
-    this.temperature = 300;
-  };
-
-  raiseTemperature = (degrees) => {
-    if (!this.fuel) return;
-    if (this.temperature <= this.maxCombustionTemperature) {
-      this.temperature = this.temperature + degrees;
-    }
-  };
-
-  isBurning = () => this.temperature > this.combustionStartTreshold;
-
-  get temperature() {
-    return this._temperature;
-  }
-
-  set temperature(temperature) {
-    if (temperature < ENV_TEMPERATURE) return;
-    if (temperature > this.maxCombustionTemperature) return;
-    this._temperature = Math.round(temperature * 100) / 100;
+class TextLabel extends pixi_js__WEBPACK_IMPORTED_MODULE_0__.BitmapText {
+  constructor(text = "heyo"){
+    super(text, { fontName, fontSize: 20 })
   }
 }
 
-function calculateFireStrength(
-  combustionStartTreshold,
-  currentTemperature,
-  maxCombustionTemperature
-) {
-  if (currentTemperature >= combustionStartTreshold) {
-    return (
-      (currentTemperature - combustionStartTreshold) /
-      (maxCombustionTemperature - combustionStartTreshold)
-    );
+const fontName = "ExampleFont";
+pixi_js__WEBPACK_IMPORTED_MODULE_0__.BitmapFont.from(
+  fontName,
+  {
+    fill: "#ff0000",
+    fontSize: 20,
+    fontWeight: "bold",
+  },
+  {
+    resolution: 1,
+    textureHeight: 1024,
+    textureWidth: 1024,
+    chars: pixi_js__WEBPACK_IMPORTED_MODULE_0__.BitmapFont.ALPHANUMERIC,
   }
-  return 0;
-}
+);
 
 
 /***/ }),
@@ -47813,15 +48647,19 @@ function gameLoop() {
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "app": () => (/* binding */ app),
 /* harmony export */   "flamableArea": () => (/* binding */ flamableArea)
 /* harmony export */ });
 /* harmony import */ var pixi_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! pixi.js */ "./node_modules/pixi.js/dist/esm/pixi.js");
 /* harmony import */ var _pixi_particle_emitter__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @pixi/particle-emitter */ "./node_modules/@pixi/particle-emitter/lib/particle-emitter.es.js");
-/* harmony import */ var _flamableObj__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./flamableObj */ "./src/flamableObj.js");
+/* harmony import */ var _FlamableObj__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./FlamableObj */ "./src/FlamableObj.js");
 /* harmony import */ var _FlammableArea__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./FlammableArea */ "./src/FlammableArea.js");
 /* harmony import */ var _gameLoop__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./gameLoop */ "./src/gameLoop.js");
-/* harmony import */ var _trees__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./trees */ "./src/trees.js");
-/* harmony import */ var _assets_fire_png__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./assets/fire.png */ "./src/assets/fire.png");
+/* harmony import */ var _assets_fire_png__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./assets/fire.png */ "./src/assets/fire.png");
+/* harmony import */ var _FireEmitter__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./FireEmitter */ "./src/FireEmitter.js");
+/* harmony import */ var _particleContainer__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./particleContainer */ "./src/particleContainer.js");
+/* harmony import */ var _ForestGenerator__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./ForestGenerator */ "./src/ForestGenerator.js");
+/* harmony import */ var _style_css__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./style.css */ "./src/style.css");
 
 
 
@@ -47830,27 +48668,33 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-let app = new pixi_js__WEBPACK_IMPORTED_MODULE_0__.Application({
+
+
+
+const container = new pixi_js__WEBPACK_IMPORTED_MODULE_0__.Container();
+
+const app = new pixi_js__WEBPACK_IMPORTED_MODULE_0__.Application({
   resizeTo: window,
   backgroundColor: pixi_js__WEBPACK_IMPORTED_MODULE_0__.utils.string2hex("#f0f9db"),
 });
 document.body.appendChild(app.view);
 
-//const container = new PIXI.Container();
-
-const container = new pixi_js__WEBPACK_IMPORTED_MODULE_0__.ParticleContainer(10000, {
-  scale: true,
-  position: true,
-  rotation: true,
-  uvs: true,
-  //alpha: true,
-});
-
 app.stage.addChild(container);
+app.stage.addChild(_particleContainer__WEBPACK_IMPORTED_MODULE_7__.particleContainer);
 
-const flamableArea = new _FlammableArea__WEBPACK_IMPORTED_MODULE_3__["default"](_trees__WEBPACK_IMPORTED_MODULE_5__["default"]);
 
-//container.addChild(...flamableArea.flamables);
+let debugMode = true;
+const debugInput = document.body.querySelector('#debug')
+debugInput.checked = debugMode
+debugInput.onchange = () => {
+    debugMode = debugInput.checked
+    flamableArea.setDebug(debugMode)
+}
+const forestGen = new _ForestGenerator__WEBPACK_IMPORTED_MODULE_8__["default"]({width: window.innerWidth, height: window.innerHeight})
+const flamableArea = new _FlammableArea__WEBPACK_IMPORTED_MODULE_3__["default"](forestGen.trees);
+
+container.addChild(...flamableArea.flamables);
+
 /* 
 container.x = app.screen.width / 2;
 container.y = app.screen.height / 2; */
@@ -47858,185 +48702,35 @@ container.y = app.screen.height / 2; */
 container.pivot.x = container.width / 2;
 container.pivot.y = container.height / 2; */
 
-const emitter = new _pixi_particle_emitter__WEBPACK_IMPORTED_MODULE_1__.Emitter(
-  // The PIXI.Container to put the emitter in
-  // if using blend modes, it's important to put this
-  // on top of a bitmap, and not use the root stage Container
-  container,
-  // Emitter configuration, edit this to change the look
-  // of the emitter
-  {
-    lifetime: {
-      min: 1,
-      max: 5,
-    },
-    frequency: 0.001,
-    spawnChance: 1,
-    particlesPerWave: 1,
-    emitterLifetime: 0,
-    maxParticles: 100,
-    pos: {
-      x: 50,
-      y: 50,
-    },
-    addAtBack: false,
-    behaviors: [
-      {
-        type: "alpha",
-        config: {
-          alpha: {
-            list: [
-              {
-                time: 0,
-                value: 0,
-              },
-              {
-                time: 0.5,
-                value: 1,
-              },
-              {
-                time: 1,
-                value: 0,
-              },
-            ],
-          },
-        },
-      },
-      {
-        type: "moveSpeed",
-        config: {
-          speed: {
-            list: [
-              {
-                time: 0,
-                value: 50,
-              },
-              {
-                time: 1,
-                value: 20,
-              },
-            ],
-          },
-        },
-      },
-      {
-        type: "scale",
-        config: {
-          scale: {
-            list: [
-              {
-                time: 0,
-                value: 0.5,
-              },
-              {
-                time: 1,
-                value: 1,
-              },
-            ],
-          },
-          minMult: 1,
-        },
-      },
-      {
-        type: "color",
-        config: {
-          color: {
-            list: [
-              {
-                time: 0,
-                value: "ffffff",
-              },
-              {
-                time: 1,
-                value: "9ff3ff",
-              },
-            ],
-          },
-        },
-      },
-      {
-        type: "rotation",
-        config: {
-          accel: 0,
-          minSpeed: 0,
-          maxSpeed: 10,
-          minStart: 0,
-          maxStart: 360,
-        },
-      },
-      {
-        type: "textureSingle",
-        config: {
-          texture: pixi_js__WEBPACK_IMPORTED_MODULE_0__.Texture.from(_assets_fire_png__WEBPACK_IMPORTED_MODULE_6__),
-        },
-      },
-      {
-        type: "spawnShape",
-        config: {
-          type: "torus",
-          data: {
-            x: 0,
-            y: 0,
-            radius: 20,
-            innerRadius: 0,
-            affectRotation: false,
-          },
-        },
-      },
-    ],
-  }
-);
-
-emitter.updateOwnerPos(window.innerWidth / 2, window.innerHeight / 2);
-emitter.emit = true;
-emitter.autoUpdate = true;
-//console.log("container");
-//console.log(container.children);
-console.log("emitter parent:", emitter.parent);
-
 app.ticker.add((delta) => {
   (0,_gameLoop__WEBPACK_IMPORTED_MODULE_4__["default"])();
   //emitter.update(0.016);
-  //console.log(emitter.particleCount);
 });
 
 
 /***/ }),
 
-/***/ "./src/trees.js":
-/*!**********************!*\
-  !*** ./src/trees.js ***!
-  \**********************/
+/***/ "./src/particleContainer.js":
+/*!**********************************!*\
+  !*** ./src/particleContainer.js ***!
+  \**********************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */   "particleContainer": () => (/* binding */ particleContainer)
 /* harmony export */ });
-/* harmony import */ var _assets_tree_png__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./assets/tree.png */ "./src/assets/tree.png");
-/* harmony import */ var _flamableObj__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./flamableObj */ "./src/flamableObj.js");
+/* harmony import */ var pixi_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! pixi.js */ "./node_modules/pixi.js/dist/esm/pixi.js");
 
 
-const trees = []
-
-const MAX_COLS = 27
-const MAX_ROWS = 20
-
-for (let row = 1; row <= MAX_COLS; row++){
-  for (let col = 1; col <= MAX_ROWS; col++){
-    const tree = new _flamableObj__WEBPACK_IMPORTED_MODULE_1__["default"](_assets_tree_png__WEBPACK_IMPORTED_MODULE_0__);
-    tree.x = row * 50;
-    tree.y = col * 50;
-    
-    tree.x += Math.floor(Math.random() * 40)
-    tree.y += Math.floor(Math.random() * 40)
-    trees.push(tree);
-  }
-}
-
-
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (trees);
+const particleContainer = new pixi_js__WEBPACK_IMPORTED_MODULE_0__.ParticleContainer(10000, {
+  scale: true,
+  position: true,
+  rotation: true,
+  uvs: true,
+  alpha: true,
+});
 
 /***/ }),
 
@@ -48047,7 +48741,7 @@ for (let row = 1; row <= MAX_COLS; row++){
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 "use strict";
-module.exports = __webpack_require__.p + "f0b90dc8dcc43ca1b5dd.png";
+module.exports = __webpack_require__.p + "90d0682fe5b83fd97f75.png";
 
 /***/ }),
 
