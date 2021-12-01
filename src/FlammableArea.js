@@ -1,4 +1,7 @@
-const MAX_NEAREST_OBJ = 5
+import { SIZE_MULTIPLIER } from "./treesGenerator";
+
+const MAX_NEAREST_OBJ = 8
+const TEMP_RADIANCE = 80
 
 export default class FlammableArea {
   constructor(flamables) {
@@ -44,7 +47,7 @@ export default class FlammableArea {
       if (flammable.isBurning()) {
         //const temp = flammable.currentTemperature
         flammable.nearest.forEach(({neighbor, distance}) => {
-          neighbor.raiseTemperature(100 / distance);
+          neighbor.raiseTemperature(TEMP_RADIANCE / (distance * 1.2));
         })
         //this.setNearest(flammable)
       }

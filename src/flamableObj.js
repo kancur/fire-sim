@@ -1,61 +1,73 @@
 import * as PIXI from "pixi.js";
 import { colord } from "colord";
-
+import FireEmitter from "./FireEmitter";
+import TextLabel from "./TextLabel";
 const ENV_TEMPERATURE = 20; // degrees celsius
 
 export default class FlammableObj extends PIXI.Sprite {
-  constructor(texture) {
+  constructor(texture, position, scale) {
     super(PIXI.Texture.from(texture));
+    this.x = position.x;
+    this.y = position.y;
     this.angle = Math.random() * 360;
     this.sizeModifiier = Math.random() * 20 - 10;
     this.anchor.set(0.5);
-    this.width = 64 + this.sizeModifiier;
-    this.height = 64 + this.sizeModifiier;
+    this.width = (64 + this.sizeModifiier) * scale;
+    this.height = (64 + this.sizeModifiier) * scale;
     this.interactive = true;
     // fire properties
     this._temperature = ENV_TEMPERATURE; // start temperature
-    this.decay = 2; // degrees celsius per update
+    this.decay = 1; // degrees celsius per update
+    this.burnSpeed = 1 * scale;
     this.combustionStartTreshold = 300; // degrees celsius
     this.maxCombustionTemperature = 600; // degress celsius
-    this._fuelTotal = 200; // amount of total fuel, no unit
-    this._fuelCurrent = 200; // amount of fuel remaining
+    this._fuelTotal = 200 * scale; // amount of total fuel, no unit
+    this._fuelCurrent = 200 * scale; // amount of fuel remaining
     this._fireStrength = 0;
     this.burntRatio = 0;
     this.on("pointerdown", this.setOnFire);
     this.neighbors = [];
+    this.fireEmitter = new FireEmitter();
+    this.textLabel = new TextLabel('Hey there 090234897');
+    this.init();
     //this.radiance = 0;   // 0 - 100
     //this.filter = new PIXI.Filter(ColorOverlayFilter);
   }
 
-  update = () => {
-    if (
-      this.temperature >= this.combustionStartTreshold &&
-      this.temperature < this.maxCombustionTemperature
-    ) {
-      if (this.fuel) {
-        this.temperature += 1;
+  init = () => {
+    this.fireEmitter.updateOwnerPos(this.x, this.y);
+    this.addChild(this.textLabel)
+    console.log(this)
+  };
+
+  shouldActivelyBurn = () => {
+    if (this.fuel) {
+      if (this.temperature >= this.combustionStartTreshold) {
+        return true;
       }
     }
+    return false;
+  };
 
-    this.fireStrength = calculateFireStrength(
-      this.combustionStartTreshold,
-      this.temperature,
-      this.maxCombustionTemperature
-    );
-
-    this.decayTemperature();
-    this.consumeFuel();
-    this.calculateBurntRatio();
-
-    let luminance = 100;
-    if (this.fireStrength > 0) {
-      luminance = 100 - this.fireStrength * 50;
-    } else if (this.burntRatio > 0) {
-      luminance = 1 - this.burntRatio;
+  heatUp = () => {
+    if (this.temperature < this.maxCombustionTemperature) {
+      this.temperature += 1;
     }
-    this.tint = PIXI.utils.string2hex(
-      colord({ h: 0, s: 100, l: luminance, a: 1 }).toHex()
-    );
+  };
+
+  update = () => {
+    const shouldBurn = this.shouldActivelyBurn();
+    if (shouldBurn) {
+      this.fireEmitter.emit = true;
+      this.heatUp();
+      this.consumeFuel();
+      this.calculateBurntRatio();
+      this.calculateFireStrength();
+      this.burnVisually();
+    } else {
+      this.fireEmitter.emit = false;
+      this.decayTemperature();
+    }
   };
 
   set fuel(amount) {
@@ -78,13 +90,19 @@ export default class FlammableObj extends PIXI.Sprite {
     return this._fireStrength;
   }
 
+  burnVisually = () => {
+    this.tint = PIXI.utils.string2hex(
+      colord({ h: 0, s: 0, l: 100 - this.burntRatio * 65, a: 1 }).toHex()
+    );
+  };
+
   calculateBurntRatio = () => {
     this.burntRatio = 1 - this.fuel / this._fuelTotal;
     //console.log('burnt -->',this.burntRatio)
   };
 
   consumeFuel = () => {
-    this.fuel -= this.fireStrength * 1;
+    this.fuel -= this.fireStrength * this.burnSpeed;
   };
 
   decayTemperature = () => {
@@ -109,7 +127,7 @@ export default class FlammableObj extends PIXI.Sprite {
     }
   };
 
-  isBurning = () => this.temperature > this.combustionStartTreshold;
+  isBurning = () => this.shouldActivelyBurn();
 
   get temperature() {
     return this._temperature;
@@ -120,18 +138,13 @@ export default class FlammableObj extends PIXI.Sprite {
     if (temperature > this.maxCombustionTemperature) return;
     this._temperature = Math.round(temperature * 100) / 100;
   }
-}
 
-function calculateFireStrength(
-  combustionStartTreshold,
-  currentTemperature,
-  maxCombustionTemperature
-) {
-  if (currentTemperature >= combustionStartTreshold) {
-    return (
-      (currentTemperature - combustionStartTreshold) /
-      (maxCombustionTemperature - combustionStartTreshold)
-    );
-  }
-  return 0;
+  calculateFireStrength = () => {
+    const divisor =
+      this.maxCombustionTemperature - this.combustionStartTreshold;
+    if (divisor > 0) {
+      this.fireStrength =
+        (this.temperature - this.combustionStartTreshold) / divisor;
+    }
+  };
 }
