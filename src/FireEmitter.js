@@ -1,7 +1,7 @@
-import * as PIXI from "pixi.js";
-import * as particles from "@pixi/particle-emitter";
-import Fire from "./assets/fire.png";
-import { particleContainer } from "./particleContainer";
+import * as PIXI from 'pixi.js';
+import * as particles from '@pixi/particle-emitter';
+import Fire from './assets/fire.png';
+import { particleContainer } from './particleContainer';
 
 export default class FireEmitter extends particles.Emitter {
   constructor() {
@@ -10,7 +10,7 @@ export default class FireEmitter extends particles.Emitter {
         min: 1,
         max: 1.5,
       },
-      frequency: 0.15,
+      frequency: 0.05,
       emitterLifetime: 0,
       maxParticles: 1000,
       addAtBack: false,
@@ -20,7 +20,7 @@ export default class FireEmitter extends particles.Emitter {
       },
       behaviors: [
         {
-          type: "alpha",
+          type: 'alpha',
           config: {
             alpha: {
               list: [
@@ -48,7 +48,7 @@ export default class FireEmitter extends particles.Emitter {
             },
           }, */
         {
-          type: "scale",
+          type: 'scale',
           config: {
             scale: {
               list: [
@@ -66,28 +66,28 @@ export default class FireEmitter extends particles.Emitter {
           },
         },
         {
-          type: "color",
+          type: 'color',
           config: {
             color: {
               list: [
                 {
                   time: 0,
-                  value: "f7cf60",
+                  value: 'f7cf60',
                 },
                 {
                   time: 0.2,
-                  value: "ff9000",
+                  value: 'ff9000',
                 },
                 {
                   time: 1,
-                  value: "666666",
+                  value: '666666',
                 },
               ],
             },
           },
         },
         {
-          type: "rotation",
+          type: 'rotation',
           config: {
             accel: 0,
             minSpeed: -50,
@@ -97,15 +97,15 @@ export default class FireEmitter extends particles.Emitter {
           },
         },
         {
-          type: "textureSingle",
+          type: 'textureSingle',
           config: {
             texture: PIXI.Texture.from(Fire),
           },
         },
         {
-          type: "spawnShape",
+          type: 'spawnShape',
           config: {
-            type: "torus",
+            type: 'torus',
             data: {
               x: 0,
               y: 0,
@@ -117,6 +117,7 @@ export default class FireEmitter extends particles.Emitter {
         },
       ],
     });
+    this.spawnChance = 1;
     this.emit = false;
     this.autoUpdate = true;
   }
