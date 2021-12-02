@@ -44411,7 +44411,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1___default()((_node_modules_css_loader_dist_runtime_sourceMaps_js__WEBPACK_IMPORTED_MODULE_0___default()));
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "html {\n  overflow-x: hidden;\n}\ncanvas {\n  display: block;\n}\n\n#settings {\n  position: fixed;\n  background-color: white;\n  padding: 6px 12px;\n  right: 0;\n  box-shadow: 0 0 10px #00000047;\n  display: flex;\n  flex-direction: column;\n  gap: 8px;\n}\n\nlabel {\n  display: flex;\n  gap: 5px;\n  vertical-align: middle;\n}\n\n.value-display {\n  width: 26px;\n}\n", "",{"version":3,"sources":["webpack://./src/style.css"],"names":[],"mappings":"AAAA;EACE,kBAAkB;AACpB;AACA;EACE,cAAc;AAChB;;AAEA;EACE,eAAe;EACf,uBAAuB;EACvB,iBAAiB;EACjB,QAAQ;EACR,8BAA8B;EAC9B,aAAa;EACb,sBAAsB;EACtB,QAAQ;AACV;;AAEA;EACE,aAAa;EACb,QAAQ;EACR,sBAAsB;AACxB;;AAEA;EACE,WAAW;AACb","sourcesContent":["html {\n  overflow-x: hidden;\n}\ncanvas {\n  display: block;\n}\n\n#settings {\n  position: fixed;\n  background-color: white;\n  padding: 6px 12px;\n  right: 0;\n  box-shadow: 0 0 10px #00000047;\n  display: flex;\n  flex-direction: column;\n  gap: 8px;\n}\n\nlabel {\n  display: flex;\n  gap: 5px;\n  vertical-align: middle;\n}\n\n.value-display {\n  width: 26px;\n}\n"],"sourceRoot":""}]);
+___CSS_LOADER_EXPORT___.push([module.id, "html {\n  overflow-x: hidden;\n  font-family: sans-serif;\n}\ncanvas {\n  display: block;\n}\n\nlabel {\n  display: flex;\n  gap: 5px;\n  vertical-align: middle;\n}\n\n.value-display {\n  width: 26px;\n}\n\n#help {\n  position: relative;\n  font-size: 22px;\n  color: rgb(255 255 255);\n  background: linear-gradient(145deg, #fb7f00, #ff5200);\n  box-shadow: 0 0px 12px #fd6c00bf;\n  padding: 6px 12px;\n  text-align: center;\n  font-weight: 700;\n  z-index: 10;\n}\n\n#settings {\n  position: relative;\n  color: rgb(36, 36, 36);\n  background-color: rgb(255 255 255);\n  border-bottom: #cacaca solid;\n  padding: 6px 12px;\n}\n\n@media only screen and (min-width: 1000px) {\n  #help {\n    position: fixed;\n    font-size: 22px;\n    border-bottom-right-radius: 10px;\n  }\n\n  #settings {\n    position: fixed;\n    padding: 6px 12px;\n    right: 0;\n    display: flex;\n    flex-direction: column;\n    gap: 8px;\n  }\n}\n", "",{"version":3,"sources":["webpack://./src/style.css"],"names":[],"mappings":"AAAA;EACE,kBAAkB;EAClB,uBAAuB;AACzB;AACA;EACE,cAAc;AAChB;;AAEA;EACE,aAAa;EACb,QAAQ;EACR,sBAAsB;AACxB;;AAEA;EACE,WAAW;AACb;;AAEA;EACE,kBAAkB;EAClB,eAAe;EACf,uBAAuB;EACvB,qDAAqD;EACrD,gCAAgC;EAChC,iBAAiB;EACjB,kBAAkB;EAClB,gBAAgB;EAChB,WAAW;AACb;;AAEA;EACE,kBAAkB;EAClB,sBAAsB;EACtB,kCAAkC;EAClC,4BAA4B;EAC5B,iBAAiB;AACnB;;AAEA;EACE;IACE,eAAe;IACf,eAAe;IACf,gCAAgC;EAClC;;EAEA;IACE,eAAe;IACf,iBAAiB;IACjB,QAAQ;IACR,aAAa;IACb,sBAAsB;IACtB,QAAQ;EACV;AACF","sourcesContent":["html {\n  overflow-x: hidden;\n  font-family: sans-serif;\n}\ncanvas {\n  display: block;\n}\n\nlabel {\n  display: flex;\n  gap: 5px;\n  vertical-align: middle;\n}\n\n.value-display {\n  width: 26px;\n}\n\n#help {\n  position: relative;\n  font-size: 22px;\n  color: rgb(255 255 255);\n  background: linear-gradient(145deg, #fb7f00, #ff5200);\n  box-shadow: 0 0px 12px #fd6c00bf;\n  padding: 6px 12px;\n  text-align: center;\n  font-weight: 700;\n  z-index: 10;\n}\n\n#settings {\n  position: relative;\n  color: rgb(36, 36, 36);\n  background-color: rgb(255 255 255);\n  border-bottom: #cacaca solid;\n  padding: 6px 12px;\n}\n\n@media only screen and (min-width: 1000px) {\n  #help {\n    position: fixed;\n    font-size: 22px;\n    border-bottom-right-radius: 10px;\n  }\n\n  #settings {\n    position: fixed;\n    padding: 6px 12px;\n    right: 0;\n    display: flex;\n    flex-direction: column;\n    gap: 8px;\n  }\n}\n"],"sourceRoot":""}]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -48484,7 +48484,9 @@ class FlammableArea {
     this.flamables = [...flamables];
     this.setNearestForEach();
     this.prevTime = '';
-    this.heatRadiance = 250;
+    this.heatRadiance = 1.3;
+    this.min = 20; // at this distance all the heat is transfered
+    this.max = Math.pow(100, 2); // no heat transfered from this distance
   }
 
   cleanFlamables = () => {
@@ -48539,12 +48541,15 @@ class FlammableArea {
 
   update() {
     //if ((new Date() - this.prevTime) < 1000) return
-    this.flammables.forEach((flammable) => {
+    this.flammables.forEach((flammable, index) => {
       flammable.update();
       if (flammable.isBurning()) {
         //const temp = flammable.currentTemperature
         flammable.nearest.forEach(({ neighbor, distance }) => {
-          const tempRaise = (this.heatRadiance * (flammable.fireStrength / 8 + 1)) / (distance * 7);
+          const normalizedDistance = (Math.pow(distance, 2) - this.min) / (this.max - this.min)
+          const cutoffNormalizedDistance = normalizedDistance > 1 ? 1 : normalizedDistance
+          const normalizedScalar = 1 - cutoffNormalizedDistance;
+          const tempRaise = (this.heatRadiance * (flammable.fireStrength / 10 + 1)) * normalizedScalar;
           neighbor.raiseTemperature(tempRaise);
         });
         //this.setNearest(flammable)
@@ -48579,18 +48584,26 @@ class ForestGenerator {
     this.debug = false;
     this.spacePerTree = 40; // square with 40 pixels long edge
     this.randomness = 100; // pixels
-    this.rows = Math.round((dimensions.height - this.randomness) / this.spacePerTree);
-    this.cols = Math.round((dimensions.width - this.randomness) / this.spacePerTree);
+    this.height = dimensions.height;
+    this.width = dimensions.width;
+    this.rows = this.getRowsCols(this.height);
+    this.cols = this.getRowsCols(this.width);
     this.size_multiplier = 1;
     this.density = 0.8;
     this.trees = [];
     this.generateTrees();
   }
 
+  getRowsCols = (dimension) => Math.round((dimension - this.randomness) / this.spacePerTree) - 1; 
+  
   generateTrees = () => {
+    this.rows = this.getRowsCols(this.height);
+    this.cols = this.getRowsCols(this.width);
+
     this.trees = [];
     for (let row = 1; row <= this.cols; row++) {
       for (let col = 1; col <= this.rows; col++) {
+       //if (this.trees.length > 1) break   // just to test with two trees
         const position = {
           x:
             row * this.spacePerTree * this.size_multiplier +
@@ -48608,6 +48621,8 @@ class ForestGenerator {
     }
   };
 }
+
+
 
 /* const trees = []
 
@@ -48847,6 +48862,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _inputs_RangeInput__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./inputs/RangeInput */ "./src/inputs/RangeInput.js");
 /* harmony import */ var _inputs_CheckBox__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./inputs/CheckBox */ "./src/inputs/CheckBox.js");
 /* harmony import */ var _inputs_ButtonInput__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./inputs/ButtonInput */ "./src/inputs/ButtonInput.js");
+/* harmony import */ var _assets_seamless_dirt_grass_jpg__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./assets/seamless-dirt-grass.jpg */ "./src/assets/seamless-dirt-grass.jpg");
+
 
 
 
@@ -48858,12 +48875,21 @@ __webpack_require__.r(__webpack_exports__);
 
 
 const container = new pixi_js__WEBPACK_IMPORTED_MODULE_0__.Container();
+const bg = new pixi_js__WEBPACK_IMPORTED_MODULE_0__.Container();
+
 const app = new pixi_js__WEBPACK_IMPORTED_MODULE_0__.Application({
   resizeTo: window,
-  backgroundColor: pixi_js__WEBPACK_IMPORTED_MODULE_0__.utils.string2hex('#f0f9db'),
+  backgroundColor: pixi_js__WEBPACK_IMPORTED_MODULE_0__.utils.string2hex('#a3814f'),
 });
 document.body.appendChild(app.view);
+window.addEventListener('resize', handleResize)
 
+let backgroundTexture = pixi_js__WEBPACK_IMPORTED_MODULE_0__.Texture.from(_assets_seamless_dirt_grass_jpg__WEBPACK_IMPORTED_MODULE_9__);
+const backgroundSprite = new pixi_js__WEBPACK_IMPORTED_MODULE_0__.TilingSprite(backgroundTexture, window.innerWidth, window.innerHeight);
+backgroundSprite.tileScale = { x: 0.5, y: 0.5 };
+bg.addChild(backgroundSprite);
+
+app.stage.addChild(bg);
 app.stage.addChild(container);
 app.stage.addChild(_particleContainer__WEBPACK_IMPORTED_MODULE_3__.particleContainer);
 
@@ -48874,9 +48900,15 @@ debugInput.onInput = (value) => {
 
 const forestDensityInput = new _inputs_RangeInput__WEBPACK_IMPORTED_MODULE_6__["default"]('Forest density:', 0.05, 1, 0.05, 0.8);
 forestDensityInput.onInput = (value) => {
-  generateNewForest(value);
+  generateNewForest(value, distributionRandomnessInput.input.value);
 };
-const heatRadianceInput = new _inputs_RangeInput__WEBPACK_IMPORTED_MODULE_6__["default"]('Heat radiance:', 50, 500, 10, 250);
+
+const distributionRandomnessInput = new _inputs_RangeInput__WEBPACK_IMPORTED_MODULE_6__["default"]('Distribution randomness:', 1, 150, 1, 100);
+distributionRandomnessInput.onInput = (value) => {
+  generateNewForest(forestDensityInput.input.value, value);
+};
+
+const heatRadianceInput = new _inputs_RangeInput__WEBPACK_IMPORTED_MODULE_6__["default"]('Heat radiance:', 0, 3, 0.1, 1.3);
 heatRadianceInput.onInput = (value) => {
   flammableArea.heatRadiance = value;
 };
@@ -48890,13 +48922,18 @@ resetButton.onClick = () => {
 
 const newForestButton = new _inputs_ButtonInput__WEBPACK_IMPORTED_MODULE_8__["default"]('Generate new forest');
 newForestButton.onClick = () => {
-  generateNewForest(forestDensityInput.input.value);
+  generateNewForest(forestDensityInput.input.value, distributionRandomnessInput.input.value);
 };
 
 const forestGen = new _ForestGenerator__WEBPACK_IMPORTED_MODULE_4__["default"]({
   width: window.innerWidth,
   height: window.innerHeight,
 });
+
+function handleResize() {
+  bg.width = window.innerWidth
+  bg.height = window.innerHeight
+}
 
 const flammableArea = new _FlammableArea__WEBPACK_IMPORTED_MODULE_1__["default"](forestGen.trees);
 
@@ -48906,8 +48943,9 @@ app.ticker.add((delta) => {
   (0,_gameLoop__WEBPACK_IMPORTED_MODULE_2__["default"])();
 });
 
-function generateNewForest(density) {
+function generateNewForest(density, distributionRandomness) {
   forestGen.density = density;
+  forestGen.randomness = distributionRandomness;
   forestGen.debug = settings.debugMode;
   forestGen.generateTrees();
   flammableArea.cleanFlamables();
@@ -49088,7 +49126,18 @@ const particleContainer = new pixi_js__WEBPACK_IMPORTED_MODULE_0__.ParticleConta
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 "use strict";
-module.exports = __webpack_require__.p + "90d0682fe5b83fd97f75.png";
+module.exports = __webpack_require__.p + "b591062c3c1692e46784.png";
+
+/***/ }),
+
+/***/ "./src/assets/seamless-dirt-grass.jpg":
+/*!********************************************!*\
+  !*** ./src/assets/seamless-dirt-grass.jpg ***!
+  \********************************************/
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+"use strict";
+module.exports = __webpack_require__.p + "0ccc1d976e4d499d5126.jpg";
 
 /***/ }),
 
@@ -49099,7 +49148,7 @@ module.exports = __webpack_require__.p + "90d0682fe5b83fd97f75.png";
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 "use strict";
-module.exports = __webpack_require__.p + "013c24ec9e574b1e4ddf.png";
+module.exports = __webpack_require__.p + "5e24f51e989332aaa963.png";
 
 /***/ }),
 
