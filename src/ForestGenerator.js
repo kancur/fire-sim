@@ -3,11 +3,11 @@ import FlammableObj from "./FlamableObj";
 
 export default class ForestGenerator {
   constructor(dimensions = {height: 80, width: 80}) {
+    this.debug = false;
     this.spacePerTree = 40; // square with 40 pixels long edge
     this.randomness = 100; // pixels
     this.rows = Math.round((dimensions.height - this.randomness) / this.spacePerTree);
     this.cols = Math.round((dimensions.width - this.randomness) / this.spacePerTree);
-    console.log(this.rows)
     this.size_multiplier = 1;
     this.density = 0.8;
     this.trees = [];
@@ -28,6 +28,7 @@ export default class ForestGenerator {
         };
         if (Math.random() < this.density) {
           const tree = new FlammableObj(Tree, position, this.size_multiplier);
+          tree.debug = this.debug;
           this.trees.push(tree);
         }
       }
