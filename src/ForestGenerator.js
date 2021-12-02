@@ -6,18 +6,26 @@ export default class ForestGenerator {
     this.debug = false;
     this.spacePerTree = 40; // square with 40 pixels long edge
     this.randomness = 100; // pixels
-    this.rows = Math.round((dimensions.height - this.randomness) / this.spacePerTree);
-    this.cols = Math.round((dimensions.width - this.randomness) / this.spacePerTree);
+    this.height = dimensions.height;
+    this.width = dimensions.width;
+    this.rows = this.getRowsCols(this.height);
+    this.cols = this.getRowsCols(this.width);
     this.size_multiplier = 1;
     this.density = 0.8;
     this.trees = [];
     this.generateTrees();
   }
 
+  getRowsCols = (dimension) => Math.round((dimension - this.randomness) / this.spacePerTree) - 1; 
+  
   generateTrees = () => {
+    this.rows = this.getRowsCols(this.height);
+    this.cols = this.getRowsCols(this.width);
+
     this.trees = [];
     for (let row = 1; row <= this.cols; row++) {
       for (let col = 1; col <= this.rows; col++) {
+       //if (this.trees.length > 1) break   // just to test with two trees
         const position = {
           x:
             row * this.spacePerTree * this.size_multiplier +
@@ -35,6 +43,8 @@ export default class ForestGenerator {
     }
   };
 }
+
+
 
 /* const trees = []
 

@@ -7,14 +7,24 @@ import './style.css';
 import RangeInput from './inputs/RangeInput';
 import CheckboxInput from './inputs/CheckBox';
 import ButtonInput from './inputs/ButtonInput';
+import BgImage from './assets/seamless-dirt-grass.jpg';
 
 const container = new PIXI.Container();
+const bg = new PIXI.Container();
+
 export const app = new PIXI.Application({
   resizeTo: window,
-  backgroundColor: PIXI.utils.string2hex('#f0f9db'),
+  backgroundColor: PIXI.utils.string2hex('#a3814f'),
 });
 document.body.appendChild(app.view);
+window.addEventListener('resize', handleResize)
 
+let backgroundTexture = PIXI.Texture.from(BgImage);
+const backgroundSprite = new PIXI.TilingSprite(backgroundTexture, window.innerWidth, window.innerHeight);
+backgroundSprite.tileScale = { x: 0.5, y: 0.5 };
+bg.addChild(backgroundSprite);
+
+app.stage.addChild(bg);
 app.stage.addChild(container);
 app.stage.addChild(particleContainer);
 
@@ -25,9 +35,15 @@ debugInput.onInput = (value) => {
 
 const forestDensityInput = new RangeInput('Forest density:', 0.05, 1, 0.05, 0.8);
 forestDensityInput.onInput = (value) => {
-  generateNewForest(value);
+  generateNewForest(value, distributionRandomnessInput.input.value);
 };
-const heatRadianceInput = new RangeInput('Heat radiance:', 50, 500, 10, 250);
+
+const distributionRandomnessInput = new RangeInput('Distribution randomness:', 1, 150, 1, 100);
+distributionRandomnessInput.onInput = (value) => {
+  generateNewForest(forestDensityInput.input.value, value);
+};
+
+const heatRadianceInput = new RangeInput('Heat radiance:', 0, 3, 0.1, 1.3);
 heatRadianceInput.onInput = (value) => {
   flammableArea.heatRadiance = value;
 };
@@ -41,13 +57,18 @@ resetButton.onClick = () => {
 
 const newForestButton = new ButtonInput('Generate new forest');
 newForestButton.onClick = () => {
-  generateNewForest(forestDensityInput.input.value);
+  generateNewForest(forestDensityInput.input.value, distributionRandomnessInput.input.value);
 };
 
 const forestGen = new ForestGenerator({
   width: window.innerWidth,
   height: window.innerHeight,
 });
+
+function handleResize() {
+  bg.width = window.innerWidth
+  bg.height = window.innerHeight
+}
 
 export const flammableArea = new FlammableArea(forestGen.trees);
 
@@ -57,8 +78,9 @@ app.ticker.add((delta) => {
   gameLoop();
 });
 
-function generateNewForest(density) {
+function generateNewForest(density, distributionRandomness) {
   forestGen.density = density;
+  forestGen.randomness = distributionRandomness;
   forestGen.debug = settings.debugMode;
   forestGen.generateTrees();
   flammableArea.cleanFlamables();

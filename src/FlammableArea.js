@@ -7,7 +7,9 @@ export default class FlammableArea {
     this.flamables = [...flamables];
     this.setNearestForEach();
     this.prevTime = '';
-    this.heatRadiance = 250;
+    this.heatRadiance = 1.3;
+    this.min = 20; // at this distance all the heat is transfered
+    this.max = Math.pow(100, 2); // no heat transfered from this distance
   }
 
   cleanFlamables = () => {
@@ -62,12 +64,15 @@ export default class FlammableArea {
 
   update() {
     //if ((new Date() - this.prevTime) < 1000) return
-    this.flammables.forEach((flammable) => {
+    this.flammables.forEach((flammable, index) => {
       flammable.update();
       if (flammable.isBurning()) {
         //const temp = flammable.currentTemperature
         flammable.nearest.forEach(({ neighbor, distance }) => {
-          const tempRaise = (this.heatRadiance * (flammable.fireStrength / 8 + 1)) / (distance * 7);
+          const normalizedDistance = (Math.pow(distance, 2) - this.min) / (this.max - this.min)
+          const cutoffNormalizedDistance = normalizedDistance > 1 ? 1 : normalizedDistance
+          const normalizedScalar = 1 - cutoffNormalizedDistance;
+          const tempRaise = (this.heatRadiance * (flammable.fireStrength / 10 + 1)) * normalizedScalar;
           neighbor.raiseTemperature(tempRaise);
         });
         //this.setNearest(flammable)
