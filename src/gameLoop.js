@@ -1,5 +1,5 @@
-import { flamableArea } from ".";
+import { flammableArea } from ".";
 
 export default function gameLoop() {
-  flamableArea.update();
+  flammableArea.update();
 }
