@@ -44411,7 +44411,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1___default()((_node_modules_css_loader_dist_runtime_sourceMaps_js__WEBPACK_IMPORTED_MODULE_0___default()));
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "html {\n  overflow-x: hidden;\n}\ncanvas {\n  display: block;\n}\n\n.settings {\n  display: fixed;\n}", "",{"version":3,"sources":["webpack://./src/style.css"],"names":[],"mappings":"AAAA;EACE,kBAAkB;AACpB;AACA;EACE,cAAc;AAChB;;AAEA;EACE,cAAc;AAChB","sourcesContent":["html {\n  overflow-x: hidden;\n}\ncanvas {\n  display: block;\n}\n\n.settings {\n  display: fixed;\n}"],"sourceRoot":""}]);
+___CSS_LOADER_EXPORT___.push([module.id, "html {\n  overflow-x: hidden;\n}\ncanvas {\n  display: block;\n}\n\n#settings {\n  position: fixed;\n  background-color: white;\n  padding: 6px 12px;\n  right: 0;\n  box-shadow: 0 0 10px #00000047;\n  display: flex;\n  flex-direction: column;\n  gap: 8px;\n}\n\nlabel {\n  display: flex;\n  gap: 5px;\n  vertical-align: middle;\n}\n\n.value-display {\n  width: 26px;\n}\n", "",{"version":3,"sources":["webpack://./src/style.css"],"names":[],"mappings":"AAAA;EACE,kBAAkB;AACpB;AACA;EACE,cAAc;AAChB;;AAEA;EACE,eAAe;EACf,uBAAuB;EACvB,iBAAiB;EACjB,QAAQ;EACR,8BAA8B;EAC9B,aAAa;EACb,sBAAsB;EACtB,QAAQ;AACV;;AAEA;EACE,aAAa;EACb,QAAQ;EACR,sBAAsB;AACxB;;AAEA;EACE,WAAW;AACb","sourcesContent":["html {\n  overflow-x: hidden;\n}\ncanvas {\n  display: block;\n}\n\n#settings {\n  position: fixed;\n  background-color: white;\n  padding: 6px 12px;\n  right: 0;\n  box-shadow: 0 0 10px #00000047;\n  display: flex;\n  flex-direction: column;\n  gap: 8px;\n}\n\nlabel {\n  display: flex;\n  gap: 5px;\n  vertical-align: middle;\n}\n\n.value-display {\n  width: 26px;\n}\n"],"sourceRoot":""}]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -48125,7 +48125,7 @@ class FireEmitter extends _pixi_particle_emitter__WEBPACK_IMPORTED_MODULE_1__.Em
         min: 1,
         max: 1.5,
       },
-      frequency: 0.15,
+      frequency: 0.05,
       emitterLifetime: 0,
       maxParticles: 1000,
       addAtBack: false,
@@ -48135,7 +48135,7 @@ class FireEmitter extends _pixi_particle_emitter__WEBPACK_IMPORTED_MODULE_1__.Em
       },
       behaviors: [
         {
-          type: "alpha",
+          type: 'alpha',
           config: {
             alpha: {
               list: [
@@ -48163,7 +48163,7 @@ class FireEmitter extends _pixi_particle_emitter__WEBPACK_IMPORTED_MODULE_1__.Em
             },
           }, */
         {
-          type: "scale",
+          type: 'scale',
           config: {
             scale: {
               list: [
@@ -48181,28 +48181,28 @@ class FireEmitter extends _pixi_particle_emitter__WEBPACK_IMPORTED_MODULE_1__.Em
           },
         },
         {
-          type: "color",
+          type: 'color',
           config: {
             color: {
               list: [
                 {
                   time: 0,
-                  value: "f7cf60",
+                  value: 'f7cf60',
                 },
                 {
                   time: 0.2,
-                  value: "ff9000",
+                  value: 'ff9000',
                 },
                 {
                   time: 1,
-                  value: "666666",
+                  value: '666666',
                 },
               ],
             },
           },
         },
         {
-          type: "rotation",
+          type: 'rotation',
           config: {
             accel: 0,
             minSpeed: -50,
@@ -48212,15 +48212,15 @@ class FireEmitter extends _pixi_particle_emitter__WEBPACK_IMPORTED_MODULE_1__.Em
           },
         },
         {
-          type: "textureSingle",
+          type: 'textureSingle',
           config: {
             texture: pixi_js__WEBPACK_IMPORTED_MODULE_0__.Texture.from(_assets_fire_png__WEBPACK_IMPORTED_MODULE_2__),
           },
         },
         {
-          type: "spawnShape",
+          type: 'spawnShape',
           config: {
-            type: "torus",
+            type: 'torus',
             data: {
               x: 0,
               y: 0,
@@ -48232,6 +48232,7 @@ class FireEmitter extends _pixi_particle_emitter__WEBPACK_IMPORTED_MODULE_1__.Em
         },
       ],
     });
+    this.spawnChance = 1;
     this.emit = false;
     this.autoUpdate = true;
   }
@@ -48252,9 +48253,11 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "default": () => (/* binding */ FlammableObj)
 /* harmony export */ });
 /* harmony import */ var pixi_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! pixi.js */ "./node_modules/pixi.js/dist/esm/pixi.js");
-/* harmony import */ var colord__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! colord */ "./node_modules/colord/index.mjs");
+/* harmony import */ var colord__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! colord */ "./node_modules/colord/index.mjs");
 /* harmony import */ var _FireEmitter__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./FireEmitter */ "./src/FireEmitter.js");
 /* harmony import */ var _TextLabel__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./TextLabel */ "./src/TextLabel.js");
+/* harmony import */ var _SmokeEmitter__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./SmokeEmitter */ "./src/SmokeEmitter.js");
+
 
 
 
@@ -48268,40 +48271,43 @@ class FlammableObj extends pixi_js__WEBPACK_IMPORTED_MODULE_0__.Container {
     this.x = position.x;
     this.y = position.y;
     this.sizeModifiier = Math.random() * 20 - 10;
-    
+
     this.sprite = new pixi_js__WEBPACK_IMPORTED_MODULE_0__.Sprite(pixi_js__WEBPACK_IMPORTED_MODULE_0__.Texture.from(texture));
     this.sprite.anchor.set(0.5);
     this.sprite.angle = Math.random() * 360;
     this.sprite.width = (64 + this.sizeModifiier) * scale;
     this.sprite.height = (64 + this.sizeModifiier) * scale;
-    
+
     this.interactive = true;
     this.debug = true;
     // fire properties
     this._temperature = ENV_TEMPERATURE; // start temperature
+    this.tempRisePerTickLimit = 10;
+    this.plannedTempRise = [];
     this.decay = 0.5; // degrees celsius per update
-    this.burnSpeed = 1 * scale;
-    this.combustionStartTreshold = 300; // degrees celsius
+    this.burnSpeed = 0.5 * scale;
+    this.combustionStartTreshold = 300 + (Math.random() * 100); // degrees celsius
     this.maxCombustionTemperature = 600; // degress celsius
-    this._fuelTotal = 200 * scale; // amount of total fuel, no unit
-    this._fuelCurrent = 200 * scale; // amount of fuel remaining
+    this._fuelTotal = 200 * scale + (Math.random() * 100); // amount of total fuel, no unit
+    this._fuelCurrent = this._fuelTotal; // amount of fuel remaining
     this._fireStrength = 0;
     this.burntRatio = 0;
     this.on("pointerdown", this.setOnFire);
     this.neighbors = [];
     this.fireEmitter = new _FireEmitter__WEBPACK_IMPORTED_MODULE_1__["default"]();
+    this.smokeEmitter = new _SmokeEmitter__WEBPACK_IMPORTED_MODULE_3__["default"]();
 
     this.textLabel = new _TextLabel__WEBPACK_IMPORTED_MODULE_2__["default"]("");
-    this.textLabel.anchor = 0.5
+    this.textLabel.anchor = 0.5;
 
     this.init();
     //this.radiance = 0;   // 0 - 100
     //this.filter = new PIXI.Filter(ColorOverlayFilter);
   }
-  
+
   init = () => {
     this.fireEmitter.updateOwnerPos(this.x, this.y);
-
+    this.smokeEmitter.updateOwnerPos(this.x, this.y);
     this.addChild(this.sprite);
     this.addChild(this.textLabel);
   };
@@ -48317,20 +48323,23 @@ class FlammableObj extends pixi_js__WEBPACK_IMPORTED_MODULE_0__.Container {
 
   heatUp = () => {
     if (this.temperature < this.maxCombustionTemperature) {
-      this.temperature += 1;
+      this.temperature += 0.6;
     }
   };
 
   update = () => {
-    if (this.debug) {
-      this.textLabel.text = Math.round(this.temperature);
-    } else {
-      this.textLabel.text = "";
-    }
+    this.dumpPlannedTempRise();
+    this.updateDebugText();
 
+    if (this.burntRatio === 1) {
+      this.updateSmokeStrength();
+    }
+    
     const shouldBurn = this.shouldActivelyBurn();
     if (shouldBurn) {
+      this.smokeEmitter.emit = true;
       this.fireEmitter.emit = true;
+      this.updateFireProps();
       this.heatUp();
       this.consumeFuel();
       this.calculateBurntRatio();
@@ -48340,6 +48349,35 @@ class FlammableObj extends pixi_js__WEBPACK_IMPORTED_MODULE_0__.Container {
       this.fireEmitter.emit = false;
       this.decayTemperature();
     }
+  };
+
+  updateSmokeStrength = () => {
+    const chance = (Math.round((this.temperature / this.maxCombustionTemperature) * 100) / 100) / 8
+    this.smokeEmitter.spawnChance = (chance > 0.02) ? chance : 0
+  }
+
+  updateDebugText = () => {
+    if (this.debug) {
+      this.textLabel.text = Math.round(this.temperature);
+    } else {
+      this.textLabel.text = "";
+    }
+  }
+  
+  updateFireProps = () => {
+    const spawnChance = this.fireStrength + 0.1
+    this.fireEmitter.spawnChance = spawnChance;
+  }
+
+  dumpPlannedTempRise = () => {
+    const total = this.plannedTempRise.reduce((total, current) => total + current, 0)
+
+    if (total > this.tempRisePerTickLimit) {
+      this.temperature += this.tempRisePerTickLimit;
+    } else {
+      this.temperature += total;
+    }
+    this.plannedTempRise = [];
   };
 
   set fuel(amount) {
@@ -48364,7 +48402,7 @@ class FlammableObj extends pixi_js__WEBPACK_IMPORTED_MODULE_0__.Container {
 
   burnVisually = () => {
     this.sprite.tint = pixi_js__WEBPACK_IMPORTED_MODULE_0__.utils.string2hex(
-      (0,colord__WEBPACK_IMPORTED_MODULE_3__.colord)({ h: 0, s: 0, l: 100 - this.burntRatio * 65, a: 1 }).toHex()
+      (0,colord__WEBPACK_IMPORTED_MODULE_4__.colord)({ h: 0, s: 0, l: 100 - this.burntRatio * 65, a: 1 }).toHex()
     );
   };
 
@@ -48388,13 +48426,15 @@ class FlammableObj extends pixi_js__WEBPACK_IMPORTED_MODULE_0__.Container {
   };
 
   setOnFire = () => {
-    this.temperature = 300;
+    this.temperature = 450;
   };
 
   raiseTemperature = (degrees) => {
-    if (!this.fuel) return;
+    //if (!this.fuel) return;
     if (this.temperature <= this.maxCombustionTemperature) {
-      this.temperature = this.temperature + degrees;
+      // will only receive half the heat from next tree per tick
+      const reducedTemp = degrees / (this.plannedTempRise.length + 1)
+      this.plannedTempRise.push(reducedTemp);
     }
   };
 
@@ -48437,15 +48477,29 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _ForestGenerator__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./ForestGenerator */ "./src/ForestGenerator.js");
 
 
-const MAX_NEAREST_OBJ = 8
-const TEMP_RADIANCE = 280
+const MAX_NEAREST_OBJ = 16;
 
 class FlammableArea {
   constructor(flamables) {
     this.flamables = [...flamables];
     this.setNearestForEach();
-    this.prevTime = "";
+    this.prevTime = '';
+    this.heatRadiance = 250;
   }
+
+  cleanFlamables = () => {
+    this.flamables.forEach((flamable) => {
+      flamable.fireEmitter.destroy();
+      flamable.smokeEmitter.destroy();
+    });
+
+    this.flamables = [];
+  };
+
+  setFlamables = (flamables) => {
+    this.flamables = [...flamables];
+    this.setNearestForEach();
+  };
 
   push(flamables) {
     this.flamables = [...this.flamables, flamables];
@@ -48455,33 +48509,33 @@ class FlammableArea {
     return this.flamables;
   }
 
-  setNearestForEach(){
+  setNearestForEach() {
     this.flammables.forEach((flammable) => {
-      this.setNearest(flammable)
-    })
+      this.setNearest(flammable);
+    });
   }
 
   setDebug(bool) {
     this.flamables.forEach((flamable) => {
       flamable.debug = bool;
-    })
+    });
   }
 
   setNearest(flammable) {
-    const withDistances = []
+    const withDistances = [];
     this.flamables.forEach((neighbor) => {
       const a = flammable.x - neighbor.x;
       const b = flammable.y - neighbor.y;
-      const c = Math.round(Math.sqrt( a*a + b*b ));
-      withDistances.push({neighbor, distance: c})
-    })
+      const c = Math.round(Math.sqrt(a * a + b * b));
+      withDistances.push({ neighbor, distance: c });
+    });
 
-    const sorted = withDistances.sort((a, b) => a.distance - b.distance)
+    const sorted = withDistances.sort((a, b) => a.distance - b.distance);
     // start from 1, because 0 is the same object itself
-    const nearest = sorted.slice(1, MAX_NEAREST_OBJ + 1)
+    const nearest = sorted.slice(1, MAX_NEAREST_OBJ + 1);
 
-    flammable.nearest = nearest
-  } 
+    flammable.nearest = nearest;
+  }
 
   update() {
     //if ((new Date() - this.prevTime) < 1000) return
@@ -48489,10 +48543,10 @@ class FlammableArea {
       flammable.update();
       if (flammable.isBurning()) {
         //const temp = flammable.currentTemperature
-        flammable.nearest.forEach(({neighbor, distance}) => {
-          const tempRaise = TEMP_RADIANCE / (distance * 4 )
+        flammable.nearest.forEach(({ neighbor, distance }) => {
+          const tempRaise = (this.heatRadiance * (flammable.fireStrength / 8 + 1)) / (distance * 7);
           neighbor.raiseTemperature(tempRaise);
-        })
+        });
         //this.setNearest(flammable)
       }
     });
@@ -48522,30 +48576,32 @@ __webpack_require__.r(__webpack_exports__);
 
 class ForestGenerator {
   constructor(dimensions = {height: 80, width: 80}) {
+    this.debug = false;
     this.spacePerTree = 40; // square with 40 pixels long edge
-    this.rows = Math.round(dimensions.height / this.spacePerTree);
-    this.cols = Math.round(dimensions.width / this.spacePerTree);
-    console.log(this.rows)
-    this.SIZE_MULTIPLIER = 1;
-    this.DENSITY = 1;
-    this.randomness = 70; // pixels
+    this.randomness = 100; // pixels
+    this.rows = Math.round((dimensions.height - this.randomness) / this.spacePerTree);
+    this.cols = Math.round((dimensions.width - this.randomness) / this.spacePerTree);
+    this.size_multiplier = 1;
+    this.density = 0.8;
     this.trees = [];
     this.generateTrees();
   }
 
   generateTrees = () => {
+    this.trees = [];
     for (let row = 1; row <= this.cols; row++) {
       for (let col = 1; col <= this.rows; col++) {
         const position = {
           x:
-            row * this.spacePerTree * this.SIZE_MULTIPLIER +
-            Math.floor(Math.random() * this.randomness * this.SIZE_MULTIPLIER),
+            row * this.spacePerTree * this.size_multiplier +
+            Math.floor(Math.random() * this.randomness * this.size_multiplier),
           y:
-            col * this.spacePerTree * this.SIZE_MULTIPLIER +
-            Math.floor(Math.random() * this.randomness * this.SIZE_MULTIPLIER),
+            col * this.spacePerTree * this.size_multiplier +
+            Math.floor(Math.random() * this.randomness * this.size_multiplier),
         };
-        if (Math.random() < this.DENSITY) {
-          const tree = new _FlamableObj__WEBPACK_IMPORTED_MODULE_1__["default"](_assets_tree_png__WEBPACK_IMPORTED_MODULE_0__, position, this.SIZE_MULTIPLIER);
+        if (Math.random() < this.density) {
+          const tree = new _FlamableObj__WEBPACK_IMPORTED_MODULE_1__["default"](_assets_tree_png__WEBPACK_IMPORTED_MODULE_0__, position, this.size_multiplier);
+          tree.debug = this.debug;
           this.trees.push(tree);
         }
       }
@@ -48574,6 +48630,138 @@ for (let row = 1; row <= MAX_COLS; row++){
     }
   }
 } */
+
+
+/***/ }),
+
+/***/ "./src/SmokeEmitter.js":
+/*!*****************************!*\
+  !*** ./src/SmokeEmitter.js ***!
+  \*****************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (/* binding */ SmokeEmitter)
+/* harmony export */ });
+/* harmony import */ var pixi_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! pixi.js */ "./node_modules/pixi.js/dist/esm/pixi.js");
+/* harmony import */ var _pixi_particle_emitter__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @pixi/particle-emitter */ "./node_modules/@pixi/particle-emitter/lib/particle-emitter.es.js");
+/* harmony import */ var _assets_fire_png__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./assets/fire.png */ "./src/assets/fire.png");
+/* harmony import */ var _particleContainer__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./particleContainer */ "./src/particleContainer.js");
+
+
+
+
+
+class SmokeEmitter extends _pixi_particle_emitter__WEBPACK_IMPORTED_MODULE_1__.Emitter {
+  constructor() {
+    super(_particleContainer__WEBPACK_IMPORTED_MODULE_3__.particleContainer, {
+      lifetime: {
+        min: 5,
+        max: 6,
+      },
+      frequency: 0.05,
+      emitterLifetime: 0,
+      maxParticles: 100,
+      addAtBack: false,
+      pos: {
+        x: 0,
+        y: 0,
+      },
+      behaviors: [
+        {
+          type: 'alpha',
+          config: {
+            alpha: {
+              list: [
+                {
+                  time: 0,
+                  value: 0,
+                },
+                {
+                  time: 0.5,
+                  value: 0.1,
+                },
+                {
+                  time: 1,
+                  value: 0,
+                },
+              ],
+            },
+          },
+        },
+        {
+          type: 'scale',
+          config: {
+            scale: {
+              list: [
+                {
+                  time: 0,
+                  value: 1,
+                },
+                {
+                  time: 1,
+                  value: 2,
+                },
+              ],
+            },
+            minMult: 0.7,
+          },
+        },
+        {
+          type: 'color',
+          config: {
+            color: {
+              list: [
+                {
+                  time: 0,
+                  value: '2b2b2b',
+                },
+                {
+                  time: 1,
+                  value: '353535',
+                },
+              ],
+            },
+          },
+        },
+        {
+          type: 'rotation',
+          config: {
+            accel: 0,
+            minSpeed: -15,
+            maxSpeed: 15,
+            minStart: 0,
+            maxStart: 360,
+          },
+        },
+        {
+          type: 'textureSingle',
+          config: {
+            texture: pixi_js__WEBPACK_IMPORTED_MODULE_0__.Texture.from(_assets_fire_png__WEBPACK_IMPORTED_MODULE_2__),
+          },
+        },
+        {
+          type: 'spawnShape',
+          config: {
+            type: 'torus',
+            data: {
+              x: 0,
+              y: 0,
+              radius: 20,
+              innerRadius: 0,
+              affectRotation: false,
+            },
+          },
+        },
+      ],
+    });
+    this.spawnChance = 0.1;
+    this.emit = false;
+    this.autoUpdate = true;
+  }
+}
 
 
 /***/ }),
@@ -48633,7 +48821,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 function gameLoop() {
-  ___WEBPACK_IMPORTED_MODULE_0__.flamableArea.update();
+  ___WEBPACK_IMPORTED_MODULE_0__.flammableArea.update();
 }
 
 /***/ }),
@@ -48648,19 +48836,17 @@ function gameLoop() {
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "app": () => (/* binding */ app),
-/* harmony export */   "flamableArea": () => (/* binding */ flamableArea)
+/* harmony export */   "flammableArea": () => (/* binding */ flammableArea)
 /* harmony export */ });
 /* harmony import */ var pixi_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! pixi.js */ "./node_modules/pixi.js/dist/esm/pixi.js");
-/* harmony import */ var _pixi_particle_emitter__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @pixi/particle-emitter */ "./node_modules/@pixi/particle-emitter/lib/particle-emitter.es.js");
-/* harmony import */ var _FlamableObj__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./FlamableObj */ "./src/FlamableObj.js");
-/* harmony import */ var _FlammableArea__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./FlammableArea */ "./src/FlammableArea.js");
-/* harmony import */ var _gameLoop__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./gameLoop */ "./src/gameLoop.js");
-/* harmony import */ var _assets_fire_png__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./assets/fire.png */ "./src/assets/fire.png");
-/* harmony import */ var _FireEmitter__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./FireEmitter */ "./src/FireEmitter.js");
-/* harmony import */ var _particleContainer__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./particleContainer */ "./src/particleContainer.js");
-/* harmony import */ var _ForestGenerator__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./ForestGenerator */ "./src/ForestGenerator.js");
-/* harmony import */ var _style_css__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./style.css */ "./src/style.css");
-
+/* harmony import */ var _FlammableArea__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./FlammableArea */ "./src/FlammableArea.js");
+/* harmony import */ var _gameLoop__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./gameLoop */ "./src/gameLoop.js");
+/* harmony import */ var _particleContainer__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./particleContainer */ "./src/particleContainer.js");
+/* harmony import */ var _ForestGenerator__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./ForestGenerator */ "./src/ForestGenerator.js");
+/* harmony import */ var _style_css__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./style.css */ "./src/style.css");
+/* harmony import */ var _inputs_RangeInput__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./inputs/RangeInput */ "./src/inputs/RangeInput.js");
+/* harmony import */ var _inputs_CheckBox__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./inputs/CheckBox */ "./src/inputs/CheckBox.js");
+/* harmony import */ var _inputs_ButtonInput__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./inputs/ButtonInput */ "./src/inputs/ButtonInput.js");
 
 
 
@@ -48672,40 +48858,201 @@ __webpack_require__.r(__webpack_exports__);
 
 
 const container = new pixi_js__WEBPACK_IMPORTED_MODULE_0__.Container();
-
 const app = new pixi_js__WEBPACK_IMPORTED_MODULE_0__.Application({
   resizeTo: window,
-  backgroundColor: pixi_js__WEBPACK_IMPORTED_MODULE_0__.utils.string2hex("#f0f9db"),
+  backgroundColor: pixi_js__WEBPACK_IMPORTED_MODULE_0__.utils.string2hex('#f0f9db'),
 });
 document.body.appendChild(app.view);
 
 app.stage.addChild(container);
-app.stage.addChild(_particleContainer__WEBPACK_IMPORTED_MODULE_7__.particleContainer);
+app.stage.addChild(_particleContainer__WEBPACK_IMPORTED_MODULE_3__.particleContainer);
 
+const debugInput = new _inputs_CheckBox__WEBPACK_IMPORTED_MODULE_7__["default"]('Show temperature (˚C)', false);
+debugInput.onInput = (value) => {
+  flammableArea.setDebug(value);
+};
 
-let debugMode = true;
-const debugInput = document.body.querySelector('#debug')
-debugInput.checked = debugMode
-debugInput.onchange = () => {
-    debugMode = debugInput.checked
-    flamableArea.setDebug(debugMode)
-}
-const forestGen = new _ForestGenerator__WEBPACK_IMPORTED_MODULE_8__["default"]({width: window.innerWidth, height: window.innerHeight})
-const flamableArea = new _FlammableArea__WEBPACK_IMPORTED_MODULE_3__["default"](forestGen.trees);
+const forestDensityInput = new _inputs_RangeInput__WEBPACK_IMPORTED_MODULE_6__["default"]('Forest density:', 0.05, 1, 0.05, 0.8);
+forestDensityInput.onInput = (value) => {
+  generateNewForest(value);
+};
+const heatRadianceInput = new _inputs_RangeInput__WEBPACK_IMPORTED_MODULE_6__["default"]('Heat radiance:', 50, 500, 10, 250);
+heatRadianceInput.onInput = (value) => {
+  flammableArea.heatRadiance = value;
+};
 
-container.addChild(...flamableArea.flamables);
+const resetButton = new _inputs_ButtonInput__WEBPACK_IMPORTED_MODULE_8__["default"]('Reset to defaults');
+resetButton.onClick = () => {
+  forestDensityInput.reset();
+  heatRadianceInput.reset();
+  debugInput.reset();
+};
 
-/* 
-container.x = app.screen.width / 2;
-container.y = app.screen.height / 2; */
-/* 
-container.pivot.x = container.width / 2;
-container.pivot.y = container.height / 2; */
+const newForestButton = new _inputs_ButtonInput__WEBPACK_IMPORTED_MODULE_8__["default"]('Generate new forest');
+newForestButton.onClick = () => {
+  generateNewForest(forestDensityInput.input.value);
+};
+
+const forestGen = new _ForestGenerator__WEBPACK_IMPORTED_MODULE_4__["default"]({
+  width: window.innerWidth,
+  height: window.innerHeight,
+});
+
+const flammableArea = new _FlammableArea__WEBPACK_IMPORTED_MODULE_1__["default"](forestGen.trees);
+
+container.addChild(...flammableArea.flamables);
 
 app.ticker.add((delta) => {
-  (0,_gameLoop__WEBPACK_IMPORTED_MODULE_4__["default"])();
-  //emitter.update(0.016);
+  (0,_gameLoop__WEBPACK_IMPORTED_MODULE_2__["default"])();
 });
+
+function generateNewForest(density) {
+  forestGen.density = density;
+  forestGen.debug = settings.debugMode;
+  forestGen.generateTrees();
+  flammableArea.cleanFlamables();
+  flammableArea.setFlamables(forestGen.trees);
+  container.removeChildren();
+  _particleContainer__WEBPACK_IMPORTED_MODULE_3__.particleContainer.removeChildren();
+  container.addChild(...flammableArea.flamables);
+}
+
+
+/***/ }),
+
+/***/ "./src/inputs/ButtonInput.js":
+/*!***********************************!*\
+  !*** ./src/inputs/ButtonInput.js ***!
+  \***********************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (/* binding */ ButtonInput)
+/* harmony export */ });
+class ButtonInput {
+  constructor(name) {
+    this.settingsContainer = document.querySelector('#settings');
+
+    this.button = document.createElement('button');
+    this.button.type = 'button';
+    this.button.innerText = name;
+    this.onClick = null;
+
+    this.init();
+  }
+
+  init() {
+    this.settingsContainer.appendChild(this.button);
+
+    this.button.addEventListener('click', () => {
+      this.onClick();
+    });
+  }
+}
+
+
+/***/ }),
+
+/***/ "./src/inputs/CheckBox.js":
+/*!********************************!*\
+  !*** ./src/inputs/CheckBox.js ***!
+  \********************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (/* binding */ CheckboxInput)
+/* harmony export */ });
+class CheckboxInput {
+  constructor(name, defaultValue) {
+    this.defaultValue = defaultValue;
+    this.settingsContainer = document.querySelector('#settings');
+
+    this.label = document.createElement('label');
+    this.label.id = name;
+    this.label.innerText = name;
+
+    this.input = document.createElement('input');
+    this.input.type = 'checkbox';
+    this.input.checked = defaultValue;
+    this.onInput = null;
+
+    this.init();
+  }
+
+  init() {
+    this.label.appendChild(this.input);
+    this.input.addEventListener('input', () => {
+      this.onInput(this.input.checked);
+    });
+
+    this.settingsContainer.appendChild(this.label);
+  }
+
+  reset() {
+    this.input.checked = this.defaultValue;
+    this.onInput(this.input.checked);
+  }
+}
+
+
+/***/ }),
+
+/***/ "./src/inputs/RangeInput.js":
+/*!**********************************!*\
+  !*** ./src/inputs/RangeInput.js ***!
+  \**********************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (/* binding */ RangeInput)
+/* harmony export */ });
+class RangeInput {
+  constructor(name, min, max, step, defaultValue) {
+    this.defaultValue = defaultValue;
+    this.settingsContainer = document.querySelector('#settings');
+
+    this.label = document.createElement('label');
+    this.label.id = name;
+    this.label.innerText = name;
+
+    this.span = document.createElement('span');
+    this.span.className = 'value-display';
+    this.span.innerText = defaultValue;
+
+    this.input = document.createElement('input');
+    this.input.type = 'range';
+    this.input.min = min;
+    this.input.max = max;
+    this.input.step = step;
+    this.input.value = defaultValue;
+    this.onInput = null;
+
+    this.init();
+  }
+
+  init() {
+    this.label.appendChild(this.span);
+    this.label.appendChild(this.input);
+    this.input.addEventListener('input', () => {
+      this.span.innerText = this.input.value;
+      this.onInput(this.input.value);
+    });
+    
+    this.settingsContainer.appendChild(this.label);
+  }
+  
+  reset() {
+    this.input.value = this.defaultValue;
+    this.span.innerText = this.input.value;
+    this.onInput(this.input.value)
+  }
+}
 
 
 /***/ }),
