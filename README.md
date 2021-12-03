@@ -1,3 +1,4 @@
+![Forest Fire Simulator Featured Image](https://github.com/kancur/fire-sim/blob/main/featured.png?raw=true)
 
 # Forest fire simulator
 
