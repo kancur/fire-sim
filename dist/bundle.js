@@ -48916,6 +48916,7 @@ heatRadianceInput.onInput = (value) => {
 const resetButton = new _inputs_ButtonInput__WEBPACK_IMPORTED_MODULE_8__["default"]('Reset to defaults');
 resetButton.onClick = () => {
   forestDensityInput.reset();
+  distributionRandomnessInput.reset();
   heatRadianceInput.reset();
   debugInput.reset();
 };
