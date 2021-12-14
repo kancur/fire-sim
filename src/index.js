@@ -51,6 +51,7 @@ heatRadianceInput.onInput = (value) => {
 const resetButton = new ButtonInput('Reset to defaults');
 resetButton.onClick = () => {
   forestDensityInput.reset();
+  distributionRandomnessInput.reset();
   heatRadianceInput.reset();
   debugInput.reset();
 };
