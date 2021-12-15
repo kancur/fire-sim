@@ -1,7 +1,7 @@
 export default class CheckboxInput {
   constructor(name, defaultValue) {
     this.defaultValue = defaultValue;
-    this.settingsContainer = document.querySelector('#settings');
+    this.settingsContainer = document.querySelector('#form');
 
     this.label = document.createElement('label');
     this.label.id = name;

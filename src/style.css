@@ -16,6 +16,21 @@ label {
   width: 26px;
 }
 
+button {
+  border: none;
+  border-radius: 4px;
+  padding: 4px 8px;
+}
+
+#buttonrow {
+  display: flex;
+  gap: 10px;
+}
+
+.grow {
+  flex-grow: 1;
+}
+
 #help {
   position: relative;
   font-size: 22px;
@@ -36,7 +51,7 @@ label {
   padding: 6px 12px;
 }
 
-@media only screen and (min-width: 1000px) {
+@media only screen and (min-width: 700px) {
   #help {
     position: fixed;
     font-size: 22px;
@@ -50,5 +65,7 @@ label {
     display: flex;
     flex-direction: column;
     gap: 8px;
+    background-color: #ffffff8c;
+    border-bottom-left-radius: 10px;
   }
 }

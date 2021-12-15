@@ -1,11 +1,11 @@
 export default class RangeInput {
   constructor(name, min, max, step, defaultValue) {
     this.defaultValue = defaultValue;
-    this.settingsContainer = document.querySelector('#settings');
+    this.settingsContainer = document.querySelector('#form');
 
     this.label = document.createElement('label');
     this.label.id = name;
-    this.label.innerText = name;
+    this.label.innerHTML = `<span class="grow">${name}</span>`;
 
     this.span = document.createElement('span');
     this.span.className = 'value-display';

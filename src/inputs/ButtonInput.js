@@ -1,6 +1,6 @@
 export default class ButtonInput {
   constructor(name) {
-    this.settingsContainer = document.querySelector('#settings');
+    this.buttonRow = document.querySelector('#buttonrow');
 
     this.button = document.createElement('button');
     this.button.type = 'button';
@@ -11,7 +11,7 @@ export default class ButtonInput {
   }
 
   init() {
-    this.settingsContainer.appendChild(this.button);
+    this.buttonRow.appendChild(this.button);
 
     this.button.addEventListener('click', () => {
       this.onClick();
