@@ -69,13 +69,16 @@ const forestGen = new ForestGenerator({
 function handleResize() {
   bg.width = window.innerWidth
   bg.height = window.innerHeight
+  forestGen.width = window.innerWidth;
+  forestGen.height = window.innerHeight;
+  app.renderer.resize(window.innerWidth + 'px', window.innerHeight + 'px');
 }
 
 export const flammableArea = new FlammableArea(forestGen.trees);
 
 container.addChild(...flammableArea.flamables);
 
-app.ticker.add((delta) => {
+app.ticker.add(() => {
   gameLoop();
 });
 
