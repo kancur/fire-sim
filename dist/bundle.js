@@ -48934,13 +48934,16 @@ const forestGen = new _ForestGenerator__WEBPACK_IMPORTED_MODULE_4__["default"]({
 function handleResize() {
   bg.width = window.innerWidth
   bg.height = window.innerHeight
+  forestGen.width = window.innerWidth;
+  forestGen.height = window.innerHeight;
+  app.renderer.resize(window.innerWidth + 'px', window.innerHeight + 'px');
 }
 
 const flammableArea = new _FlammableArea__WEBPACK_IMPORTED_MODULE_1__["default"](forestGen.trees);
 
 container.addChild(...flammableArea.flamables);
 
-app.ticker.add((delta) => {
+app.ticker.add(() => {
   (0,_gameLoop__WEBPACK_IMPORTED_MODULE_2__["default"])();
 });
 
