@@ -44411,7 +44411,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1___default()((_node_modules_css_loader_dist_runtime_sourceMaps_js__WEBPACK_IMPORTED_MODULE_0___default()));
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "html {\n  overflow-x: hidden;\n  font-family: sans-serif;\n}\ncanvas {\n  display: block;\n}\n\nlabel {\n  display: flex;\n  gap: 5px;\n  vertical-align: middle;\n}\n\n.value-display {\n  width: 26px;\n}\n\n#help {\n  position: relative;\n  font-size: 22px;\n  color: rgb(255 255 255);\n  background: linear-gradient(145deg, #fb7f00, #ff5200);\n  box-shadow: 0 0px 12px #fd6c00bf;\n  padding: 6px 12px;\n  text-align: center;\n  font-weight: 700;\n  z-index: 10;\n}\n\n#settings {\n  position: relative;\n  color: rgb(36, 36, 36);\n  background-color: rgb(255 255 255);\n  border-bottom: #cacaca solid;\n  padding: 6px 12px;\n}\n\n@media only screen and (min-width: 1000px) {\n  #help {\n    position: fixed;\n    font-size: 22px;\n    border-bottom-right-radius: 10px;\n  }\n\n  #settings {\n    position: fixed;\n    padding: 6px 12px;\n    right: 0;\n    display: flex;\n    flex-direction: column;\n    gap: 8px;\n  }\n}\n", "",{"version":3,"sources":["webpack://./src/style.css"],"names":[],"mappings":"AAAA;EACE,kBAAkB;EAClB,uBAAuB;AACzB;AACA;EACE,cAAc;AAChB;;AAEA;EACE,aAAa;EACb,QAAQ;EACR,sBAAsB;AACxB;;AAEA;EACE,WAAW;AACb;;AAEA;EACE,kBAAkB;EAClB,eAAe;EACf,uBAAuB;EACvB,qDAAqD;EACrD,gCAAgC;EAChC,iBAAiB;EACjB,kBAAkB;EAClB,gBAAgB;EAChB,WAAW;AACb;;AAEA;EACE,kBAAkB;EAClB,sBAAsB;EACtB,kCAAkC;EAClC,4BAA4B;EAC5B,iBAAiB;AACnB;;AAEA;EACE;IACE,eAAe;IACf,eAAe;IACf,gCAAgC;EAClC;;EAEA;IACE,eAAe;IACf,iBAAiB;IACjB,QAAQ;IACR,aAAa;IACb,sBAAsB;IACtB,QAAQ;EACV;AACF","sourcesContent":["html {\n  overflow-x: hidden;\n  font-family: sans-serif;\n}\ncanvas {\n  display: block;\n}\n\nlabel {\n  display: flex;\n  gap: 5px;\n  vertical-align: middle;\n}\n\n.value-display {\n  width: 26px;\n}\n\n#help {\n  position: relative;\n  font-size: 22px;\n  color: rgb(255 255 255);\n  background: linear-gradient(145deg, #fb7f00, #ff5200);\n  box-shadow: 0 0px 12px #fd6c00bf;\n  padding: 6px 12px;\n  text-align: center;\n  font-weight: 700;\n  z-index: 10;\n}\n\n#settings {\n  position: relative;\n  color: rgb(36, 36, 36);\n  background-color: rgb(255 255 255);\n  border-bottom: #cacaca solid;\n  padding: 6px 12px;\n}\n\n@media only screen and (min-width: 1000px) {\n  #help {\n    position: fixed;\n    font-size: 22px;\n    border-bottom-right-radius: 10px;\n  }\n\n  #settings {\n    position: fixed;\n    padding: 6px 12px;\n    right: 0;\n    display: flex;\n    flex-direction: column;\n    gap: 8px;\n  }\n}\n"],"sourceRoot":""}]);
+___CSS_LOADER_EXPORT___.push([module.id, "html {\n  overflow-x: hidden;\n  font-family: sans-serif;\n}\ncanvas {\n  display: block;\n}\n\nlabel {\n  display: flex;\n  gap: 5px;\n  vertical-align: middle;\n}\n\n.value-display {\n  width: 26px;\n}\n\nbutton {\n  border: none;\n  border-radius: 4px;\n  padding: 4px 8px;\n}\n\n#buttonrow {\n  display: flex;\n  gap: 10px;\n}\n\n.grow {\n  flex-grow: 1;\n}\n\n#help {\n  position: relative;\n  font-size: 22px;\n  color: rgb(255 255 255);\n  background: linear-gradient(145deg, #fb7f00, #ff5200);\n  box-shadow: 0 0px 12px #fd6c00bf;\n  padding: 6px 12px;\n  text-align: center;\n  font-weight: 700;\n  z-index: 10;\n}\n\n#settings {\n  position: relative;\n  color: rgb(36, 36, 36);\n  background-color: rgb(255 255 255);\n  border-bottom: #cacaca solid;\n  padding: 6px 12px;\n}\n\n@media only screen and (min-width: 700px) {\n  #help {\n    position: fixed;\n    font-size: 22px;\n    border-bottom-right-radius: 10px;\n  }\n\n  #settings {\n    position: fixed;\n    padding: 6px 12px;\n    right: 0;\n    display: flex;\n    flex-direction: column;\n    gap: 8px;\n    background-color: #ffffff8c;\n    border-bottom-left-radius: 10px;\n  }\n}\n", "",{"version":3,"sources":["webpack://./src/style.css"],"names":[],"mappings":"AAAA;EACE,kBAAkB;EAClB,uBAAuB;AACzB;AACA;EACE,cAAc;AAChB;;AAEA;EACE,aAAa;EACb,QAAQ;EACR,sBAAsB;AACxB;;AAEA;EACE,WAAW;AACb;;AAEA;EACE,YAAY;EACZ,kBAAkB;EAClB,gBAAgB;AAClB;;AAEA;EACE,aAAa;EACb,SAAS;AACX;;AAEA;EACE,YAAY;AACd;;AAEA;EACE,kBAAkB;EAClB,eAAe;EACf,uBAAuB;EACvB,qDAAqD;EACrD,gCAAgC;EAChC,iBAAiB;EACjB,kBAAkB;EAClB,gBAAgB;EAChB,WAAW;AACb;;AAEA;EACE,kBAAkB;EAClB,sBAAsB;EACtB,kCAAkC;EAClC,4BAA4B;EAC5B,iBAAiB;AACnB;;AAEA;EACE;IACE,eAAe;IACf,eAAe;IACf,gCAAgC;EAClC;;EAEA;IACE,eAAe;IACf,iBAAiB;IACjB,QAAQ;IACR,aAAa;IACb,sBAAsB;IACtB,QAAQ;IACR,2BAA2B;IAC3B,+BAA+B;EACjC;AACF","sourcesContent":["html {\n  overflow-x: hidden;\n  font-family: sans-serif;\n}\ncanvas {\n  display: block;\n}\n\nlabel {\n  display: flex;\n  gap: 5px;\n  vertical-align: middle;\n}\n\n.value-display {\n  width: 26px;\n}\n\nbutton {\n  border: none;\n  border-radius: 4px;\n  padding: 4px 8px;\n}\n\n#buttonrow {\n  display: flex;\n  gap: 10px;\n}\n\n.grow {\n  flex-grow: 1;\n}\n\n#help {\n  position: relative;\n  font-size: 22px;\n  color: rgb(255 255 255);\n  background: linear-gradient(145deg, #fb7f00, #ff5200);\n  box-shadow: 0 0px 12px #fd6c00bf;\n  padding: 6px 12px;\n  text-align: center;\n  font-weight: 700;\n  z-index: 10;\n}\n\n#settings {\n  position: relative;\n  color: rgb(36, 36, 36);\n  background-color: rgb(255 255 255);\n  border-bottom: #cacaca solid;\n  padding: 6px 12px;\n}\n\n@media only screen and (min-width: 700px) {\n  #help {\n    position: fixed;\n    font-size: 22px;\n    border-bottom-right-radius: 10px;\n  }\n\n  #settings {\n    position: fixed;\n    padding: 6px 12px;\n    right: 0;\n    display: flex;\n    flex-direction: column;\n    gap: 8px;\n    background-color: #ffffff8c;\n    border-bottom-left-radius: 10px;\n  }\n}\n"],"sourceRoot":""}]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -48975,7 +48975,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 class ButtonInput {
   constructor(name) {
-    this.settingsContainer = document.querySelector('#settings');
+    this.buttonRow = document.querySelector('#buttonrow');
 
     this.button = document.createElement('button');
     this.button.type = 'button';
@@ -48986,7 +48986,7 @@ class ButtonInput {
   }
 
   init() {
-    this.settingsContainer.appendChild(this.button);
+    this.buttonRow.appendChild(this.button);
 
     this.button.addEventListener('click', () => {
       this.onClick();
@@ -49011,7 +49011,7 @@ __webpack_require__.r(__webpack_exports__);
 class CheckboxInput {
   constructor(name, defaultValue) {
     this.defaultValue = defaultValue;
-    this.settingsContainer = document.querySelector('#settings');
+    this.settingsContainer = document.querySelector('#form');
 
     this.label = document.createElement('label');
     this.label.id = name;
@@ -49057,11 +49057,11 @@ __webpack_require__.r(__webpack_exports__);
 class RangeInput {
   constructor(name, min, max, step, defaultValue) {
     this.defaultValue = defaultValue;
-    this.settingsContainer = document.querySelector('#settings');
+    this.settingsContainer = document.querySelector('#form');
 
     this.label = document.createElement('label');
     this.label.id = name;
-    this.label.innerText = name;
+    this.label.innerHTML = `<span class="grow">${name}</span>`;
 
     this.span = document.createElement('span');
     this.span.className = 'value-display';
